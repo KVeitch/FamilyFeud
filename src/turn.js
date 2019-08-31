@@ -24,3 +24,8 @@ class Turn {
 
 
 }
+
+
+if (typeof module !== 'undefined') {
+  module.exports = Turn;
+}
