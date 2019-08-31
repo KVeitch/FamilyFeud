@@ -39,7 +39,7 @@ describe('TURN CLASS', function() {
     it('when a play is correct it should tell the the survey result for their answer', function() {
       expect(turn.giveFeedback(boo1)).to.equal('feedback');
     });
-  }
+  })
 
   it('it should change active player after an answer is given', function() {
     expect('player1.classList.includes()').to.equal(true);
@@ -59,5 +59,6 @@ describe('TURN CLASS', function() {
     it('should increase the score by the amount of people that gave the same answer multiplied by the multiplyer', function() {
       expect(true).to.equal(true);
     });
-  }
+  })
 });
+
