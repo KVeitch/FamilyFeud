@@ -4,19 +4,85 @@ $main-typeface: 'Lato', sans-serif;
   font-family: $main-typeface;
 }
 
+body {
+	background-color: black;
+}
 
 header {
   width: 100%;
   height: 20%;  
   text-align: center;  
+  border: 2px solid #DC143C;
+  margin-bottom: 2%;
+  background-color: #D4AF37;
   
   h1 {
-    color: blue;
+    color: #DC143C;
   }
+
   .container {
     display: flex;
     justify-content: space-around;
-
   }
+
+}
+
+main {
+	display: flex;
+	height: 500px;
+	width: 100%;
+	justify-content: space-between;
+
+	.game {
+		padding: 2%;
+		height: 100%;
+		width: 60%;
+		border: 2px solid #DC143C;
+		background-color: #D4AF37;
+
+		.qStyle {
+			margin-top: 20%;
+		}
+	}
+
+	.inputs {
+		padding: 2%;
+		display: flex;
+		height: 100%;
+		width: 30%;
+		flex-direction: column;
+		border: 2px solid #DC143C;
+		background-color: #D4AF37;
+
+		.player1-inputs {
+			margin-top: 20%;
+		}
+
+		.player2-inputs {
+			margin-top: 20%;
+		}
+
+		.player1-inputs-btn {
+			height: 40%;
+			width: 30%;
+		}
+
+		.player2-inputs-btn {
+			height: 40%;
+			width: 30%;
+		}
+
+		input {
+			width: 60%;
+			height: 35%;
+		}
+
+		.reset-button {
+			margin: 30% 30% 26% 30%;
+   			height: 10%;
+    		width: 35%; 
+
+		}
+	}
 }
 
