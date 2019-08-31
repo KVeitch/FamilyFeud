@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>FastMoney$ Feud</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <header>
+      <h1>FastMoney$ Feud</h1>
+      <div class="player1-style">
+        <h3> User Name 1</h3>
+        <h3> User 1 Score</h3>
+      </div>
+      <div class="round-info">Round `${roundsomething}`</div>
+      <div class="player2-style">
+        <h3> User Name 2</h3>
+        <h3> User 2 Score</h3>
+      </div>
+    </header>
+    <main>
+        <section class="player-name-prompts">
+          <h2>Enter players names!</h2>
+          <input type="text"> Player 1 </input>
+          <input type="text"> Player 2 </input>
+          <button> YAS QUEEN </button>
+        </section>
+        <section class="finish-round">
+            <h3>`Congratulations ${roundwinner} u won dis round!`</h3>
+          </section>
+          <section class="finish-game">
+              <h3>`Congratulations ${gamewinner} u won dis game!`</h3>
+          </section>
+      <section class="game">
+        <h3>Question: `${questiontext}`</h3>
+        <div class="answer1"></div>
+        <div class="answer2"></div>
+        <div class="answer3"></div>
+      </section>
+      <section class="inputs">
+        <div class="player1-inputs">
+          <h4 class="player-1-name">Player1 Name</h4>
+          <input type="text">Guess here muthafuckas!</input>
+          <button class="player1-inputs">Submit</button>
+        </div>
+        <div class="player2-inputs">
+          <h4 class="player-2-name">Player2 Name</h4>
+          <input type="text">Guess here muthafuckas!</input>
+          <button class="player2-inputs">Submit</button>
+        </div>
+        <button>Reset</button>
+      </section>
+    </main>
   </body>
 </html>
