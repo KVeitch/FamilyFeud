@@ -1,12 +1,21 @@
 class Turn {
-  constructor(answers, player1name, player2name) {
+  constructor(answers, player) {
     this.answers = answers; //array of answer objects with correct surveyId
-    this.player1 = player1name; //string name only
-    this.player2 = player2name //string name only
+    this.player = player;
+    this.answerArr = answers.map(answer => answer.answer.toLowerCase());
   }
 
-  hasAnswer(guess) {}
-  //is the answer on the survey
+  hasAnswer() {
+    let index;
+    let playerGuess = $('.player1__guess').val().toLowerCase();
+    if(this.answerArr.includes(playerGuess)) {
+    index = this.answerArr.findIndex(answer => answer === playerGuess);
+    console.log(index)
+    $(`#jq-answer${index}`).toggle('hidden');
+    $(`#jq-dollar${index}`).toggle('hidden');
+    }
+  }
+  
 
   giveFeedback(boulean) {}
     // you're answer is wrong now CardiB is sad for you

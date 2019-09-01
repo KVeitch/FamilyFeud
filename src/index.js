@@ -15,7 +15,16 @@ $('.inputs__reset').click(function() {
 })
 
 $('.player__button').click(playerButtonHelper);
+
+$('.player1__button').click(player1ButtonHelper);
+
+// $('.player2__button').click(player2ButtonHelper);
+
 game.getSurveys();
+
+function player1ButtonHelper() {
+	game.round.turn.hasAnswer();
+}
 
 function playerButtonHelper() {
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
@@ -24,6 +33,9 @@ function playerButtonHelper() {
     domUpdates.appendSurvey(game);
     domUpdates.hideSplashPage();
     game.round.makeNewTurn();
+    domUpdates.appendAnswers(game);
   }
+
+
 
 
