@@ -3,8 +3,8 @@ class Turn {
     this.answers = answers; //array of answer objects with correct surveyId
     this.player1 = player1name; //string name only
     this.player2 = player2name //string name only
-
   }
+
   hasAnswer(guess) {}
   //is the answer on the survey
 

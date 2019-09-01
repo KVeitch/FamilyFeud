@@ -23,6 +23,7 @@ function playerButtonHelper() {
     domUpdates.appendNames(game);
     domUpdates.appendSurvey(game);
     domUpdates.hideSplashPage();
+    game.round.makeNewTurn();
   }
 
 
