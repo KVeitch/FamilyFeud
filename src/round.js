@@ -1,8 +1,8 @@
 class Round {
 	constructor(survey, player1, player2) {
-		this.survey = survey
-		this.player1Name = player1
-		this.player2Name = player2
+		this.survey = survey;
+		this.player1Name = player1;
+		this.player2Name = player2;
 	}
 
 	getRoundWinner() {
