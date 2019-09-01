@@ -1,7 +1,16 @@
+const Round = require('../src/round');
+const FastMoney = require('../src/fastMoney');
+const Player = require('../src/player');
+
+
 class Game {
   constructor(data) {
-    this.data = data
+    this.data = data;
     this.surveys = [];
+    this.round = {};
+    this.roundCount = 0;
+    this.player1 = {};
+    this.player2 = {};
   }
 
   getSurveys() {
@@ -19,9 +28,20 @@ class Game {
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
   }
 
-  startRound() {}
+  startRound() {
+    this.roundCount++;
+    
+    if(this.roundCount === 3) {
+      this.round = new FastMoney(this.surveys[2]);
+    } else {
+      this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
+    }
+  }
 
-
+  makePlayers(player1Name, player2Name) {
+    this.player1 = new Player(player1Name, 1)
+    this.player2 = new Player(player2Name, 2)
+  }
 
 }
 
