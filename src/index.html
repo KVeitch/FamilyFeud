@@ -6,51 +6,51 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <header>
-      <h1>FastMoney$ Feud</h1>
-      <div class="container">
-        <div class="player1-style">
-          <h3 class="jq-player1"> Player Name 1</h3>
-          <h3 class="jq-score1"> Player 1 Score</h3>
+    <header class="header">
+      <h1 class="header__h1">FastMoney$ Feud</h1>
+      <div class="header__container">
+        <div class="container__player1">
+          <h3 class="player1__name jq-player1"> Player Name 1</h3>
+          <h3 class="player1__score jq-score1"> Player 1 Score</h3>
         </div>
-        <div class="round-info">Round <span id="round-number">1</span></div>
-        <div class="player2-style">
-          <h3 class="jq-player2"> Player Name 2</h3>
-          <h3 class="jq-score2"> Player 2 Score</h3>
+        <div class="container__round">Round <span id="round-number">1</span></div>
+        <div class="container__player2">
+          <h3 class="player2__name jq-player2"> Player Name 2</h3>
+          <h3 class="player2__score jq-score2"> Player 2 Score</h3>
         </div>
     </div>
     </header>
-    <main>
-        <section class="player-name-prompts" hidden>
-          <h2>Enter players names!</h2>
-          <input type="text"> Player 1 </input>
-          <input type="text"> Player 2 </input>
-          <button> YAS QUEEN </button>
+    <main class="main">
+        <section class="main__player" hidden>
+          <h2 class="player__prompt">Enter players names!</h2>
+          <input type="text" class="player__input1"> Player 1 </input>
+          <input type="text" class="player__input2"> Player 2 </input>
+          <button class="player__button"> YAS QUEEN </button>
         </section>
-        <section class="finish-round" hidden>
-            <h3>Congratulations <span id="round-winner"></span> u won dis round!</h3>
+        <section class="main__round">
+            <h3 class="round__message">Congratulations <span id="round-winner"></span> u won dis round!</h3>
           </section>
-          <section class="finish-game" hidden>
-              <h3>Congratulations <span id="game-winner"></span> u won dis game!</h3>
+          <section class="main__game">
+              <h3 class="game__message">Congratulations <span id="game-winner"></span> u won dis game!</h3>
           </section>
       <section class="game">
-        <h3>Question: <span id="question-text"></span></h3>
-        <div class="answer1 qStyle">1xxx</div>
-        <div class="answer2 qStyle">2xxx</div>
-        <div class="answer3 qStyle">3xxx</div>
+        <h3 class="game__question">Question: <span id="question-text"></span></h3>
+        <div class="game__answer1 qStyle">1xxx</div>
+        <div class="game__answer2 qStyle">2xxx</div>
+        <div class="game__answer3 qStyle">3xxx</div>
       </section>
       <section class="inputs">
-        <div class="player1-inputs">
-          <h4 class="player-1-name">Player1 Name</h4>
-          <input type="text"></input>
-          <button class="player1-inputs-btn">Submit</button>
+        <div class="inputs__player1">
+          <h4 class="player1__name">Player1 Name</h4>
+          <input type="text" class="player1__guess">Guess here muthafuckas!</input>
+          <button class="player1__button">Submit</button>
         </div>
-        <div class="player2-inputs">
-          <h4 class="player-2-name">Player2 Name</h4>
-          <input type="text"></input>
-          <button class="player2-inputs-btn">Submit</button>
+        <div class="inputs__player2">
+          <h4 class="player2__name">Player2 Name</h4>
+          <input type="text" class="player2__guess">Guess here muthafuckas!</input>
+          <button class="player2__button">Submit</button>
         </div>
-        <button class="reset-button">Reset</button>
+        <button class="inputs__reset">Reset</button>
       </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
