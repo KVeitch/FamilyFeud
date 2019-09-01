@@ -7,7 +7,7 @@ $light-green: #dcdcbb;
 
 body {
 	font-family: $main-typeface;
-	// background-image: url(https://github.com/KVeitch/FamilyFeud/blob/assets/images/background-img.png);  //not working at the moment
+	background-image: url('../images/background-img.png');  //not working at the moment
 }
 .display-typeface {
 	font-family: $display-typeface;
