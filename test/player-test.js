@@ -5,8 +5,8 @@ let player1, player2
 
 describe('PLAYER CLASS', function() {
   beforeEach(() => {
-    player1 = new Player('Tina', 1 );
-    player2 = new Player('Mildred', 2 );
+    player1 = new Player('Tina');
+    player2 = new Player('Mildred');
   })
 
   it('should have a name', function() {
