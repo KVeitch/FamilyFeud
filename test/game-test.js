@@ -39,16 +39,18 @@ describe('GAME CLASS', function() {
     expect(game.roundCount).to.equal(2);
   });
   
-  it.only('Should be able to instantiate a new round', () => {
+  it('Should be able to instantiate a new round', () => {
     game.startRound();
     expect(game.round).to.be.an.instanceof(Round);
-    // game.startRound();
-    // expect(round2).to.be.an.instanceof(Round);
-    // game.startRound();
-    // expect(round3).to.be.an.instanceof(Round);
-  })
+  });
   
-
-
-
+  it.only('Should be able to instantiate player1 and player2', () => {
+    game.makePlayers('Wilson', 'Susan');
+    
+    expect(game.player1.name).to.equal('Wilson');
+    expect(game.player2.name).to.equal('Susan');
+    expect(game.player1.score).to.equal(0);
+    expect(game.player2.score).to.equal(0);
+    expect(game.player1.id).to.equal('player1');
+  });
 })
