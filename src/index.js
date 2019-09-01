@@ -1,15 +1,28 @@
-
-let round;
-// An example of how you import jQuery into a JS file if you use jQuery in that file
+//any calculation to go to the dom should happen here
 import $ from 'jquery';
-import './domUpdates';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+import domUpdates from './domUpdates';
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import data from '../test/survey-sample-data';
+
+const Game = require('./game');
+let game = new Game(data);
+
+
 
 $('.inputs__reset').click(function() {
   location.reload()
 })
+
+$('.player__button').click(playerButtonHelper);
+game.getSurveys();
+
+function playerButtonHelper() {
+    game.makePlayers($('.player__input1').val(), $('.player__input2').val());
+    game.startRound();
+    domUpdates.appendNames(game);
+    domUpdates.appendSurvey(game);
+    domUpdates.hideSplashPage();
+  }
+
+
