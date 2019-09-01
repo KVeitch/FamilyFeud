@@ -1,7 +1,12 @@
+const Round = require('../src/round');
+
+
 class Game {
   constructor(data) {
-    this.data = data
+    this.data = data;
     this.surveys = [];
+    this.roundCount = 0;
+    this.round;
   }
 
   getSurveys() {
@@ -19,8 +24,12 @@ class Game {
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
   }
 
-  startRound() {}
-
+  startRound() {
+    this.roundCount++;
+    
+    this.round = new Round(this.surveys[this.roundCount - 1]);
+  }
+  
 
 
 }

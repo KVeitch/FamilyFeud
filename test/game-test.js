@@ -31,7 +31,22 @@ describe('GAME CLASS', function() {
     expect(game.surveys.length).to.equal(3)
   });
 
+  it('Should keep track of rounds', function() {
+    expect(game.roundCount).to.equal(0);
+    game.startRound();
+    expect(game.roundCount).to.equal(1);
+    game.startRound();
+    expect(game.roundCount).to.equal(2);
+  });
   
+  it.only('Should be able to instantiate a new round', () => {
+    game.startRound();
+    expect(game.round).to.be.an.instanceof(Round);
+    // game.startRound();
+    // expect(round2).to.be.an.instanceof(Round);
+    // game.startRound();
+    // expect(round3).to.be.an.instanceof(Round);
+  })
   
 
 
