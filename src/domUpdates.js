@@ -1,12 +1,18 @@
-const Game = require('./game');
-const data = require('../test/survey-sample-data');
-const game = new Game(data);
+//write anything to the dom it goes here
+const domUpdates = {
 
-$('.player__button').click(function () {
-  game.makePlayers($('.player__input1').val(), $('.player__input2').val())
-  $('.main__player').toggle('hidden')
-})
+    appendNames(game) {
+        $('.jq-name1').text(game.player1.name);
+        $('.jq-name2').text(game.player2.name);
+    },
 
+    appendSurvey(game) {
+        $('#question-text').text(game.round.survey.question);
+    }, 
 
+    hideSplashPage() {
+        $('.main__player').toggle('hidden');
+    }
+}
 
-
+export default domUpdates 
