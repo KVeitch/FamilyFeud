@@ -53,6 +53,16 @@ main {
 
 	}
 
+	.main__player {
+		position: absolute;
+		z-index: 20;
+		background-color: #526c5b;
+		width: 50%;
+		height: 25%;
+		top: 40%;
+		left: 25%;
+	}
+
 	.inputs {
 		padding: 2%;
 		display: flex;
