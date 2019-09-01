@@ -33,7 +33,6 @@ header {
 
 main {
 	display: flex;
-	height: 500px;
 	width: 100%;
 	justify-content: space-between;
 
@@ -62,6 +61,7 @@ main {
 		color: $light-green;
 		margin: 10% 0 0 0;
 		font-size: 3.5em;
+		background-color: rgba(36,76,60,0.7);
 	}
 
 	.main__game {

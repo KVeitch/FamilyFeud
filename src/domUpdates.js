@@ -12,6 +12,13 @@ const domUpdates = {
 
     hideSplashPage() {
         $('.main__player').toggle('hidden');
+    },
+
+    appendAnswers(game) {
+        console.log(game.round.turn.answers[0])
+        $('#jq-answer0').text(game.round.turn.answers[0].answer)
+        $('#jq-answer1').text(game.round.turn.answers[1].answer)
+        $('#jq-answer2').text(game.round.turn.answers[2].answer)
     }
 }
 
