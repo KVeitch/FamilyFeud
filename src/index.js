@@ -3,7 +3,7 @@ import $ from 'jquery';
 import domUpdates from './domUpdates';
 import './css/base.scss';
 import './images/turing-logo.png'
-import data from '../test/survey-sample-data';
+import data from '../test/sample-data-3surveys';
 
 const Game = require('./game');
 let game = new Game(data);
