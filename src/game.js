@@ -1,22 +1,22 @@
 class Game {
   constructor(data) {
     this.data = data
+    this.surveys = [];
   }
 
   getSurveys() {
-    let surveys = []
-    while(surveys.length < 3) {
+    while (this.surveys.length < 3) {
       let id = Math.ceil(Math.random() * this.data.surveys.length);
-      if(surveys.indexOf(id) === -1) surveys.push(id);
+      if (this.surveys.indexOf(id) === -1) surveys.push(id);
     }
     surveys = surveys.map(idNum => {
-      let question = this.data.surveys.find(survey => survey.id===idNum);
-      let answers =  this.data.answers.filter(answer=> {
-        return (answer.surveyId === idNum);
-      });
+      let question = this.data.surveys.find(survey => survey.id === idNum);
+      let answers =  this.data.answers.filter(answer => (answer.surveyId === idNum));
       return ({question: question.question, answers: answers});
     });
-    this.surveys = surveys;
+  
+    this.surveys.forEach(survey => survey.answers
+      .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
   }
 
   startRound() {}

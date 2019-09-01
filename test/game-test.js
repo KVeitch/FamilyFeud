@@ -23,7 +23,7 @@ describe('GAME CLASS', function() {
   });
 
   it.only('Should start with no surveys', function() {
-  	expect(game.survey).to.equal(undefined)
+  	expect(game.surveys.length).to.equal(0)
   });
 
   it.only('Should get 3 surveys', function() {
