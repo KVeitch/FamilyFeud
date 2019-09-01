@@ -51,7 +51,7 @@ main {
 	}
 
 	#question-text {
-		font-family: $display-typeface;
+		font-family: $main-typeface;
 		color: $dark-green;
 		background-color:$light-green;
 		width: 90%;
@@ -60,7 +60,6 @@ main {
 	.qStyle {
 		font-family: $display-typeface;
 		color: $light-green;
-		/*background-color:$dark-green;		*/
 		margin: 10% 0 0 0;
 		font-size: 3.5em;
 	}
@@ -81,6 +80,7 @@ main {
 		background-color: #dcdcbb;
 		width: 50%;
 		height: 30%;
+		min-height: 250px;
 		top: 40%;
 		left: 25%;
 		border: 10px double #244c3c;
