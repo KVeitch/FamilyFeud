@@ -1,4 +1,5 @@
 const Game = require('./game');
+const Round = require('./round');
 const data = require('../test/survey-sample-data');
 const game = new Game(data);
 
@@ -15,8 +16,15 @@ function appendNames() {
 
 function playerButtonHelper() {
   $('.main__player').toggle('hidden');
+  game.getSurveys();
   createPlayers();
+  game.startRound();
   appendNames();
+  appendSurvey();
+}
+
+function appendSurvey() {
+  $('#question-text').text(game.round.survey.question);
 }
 
 
