@@ -16,8 +16,8 @@ turn;
 describe('GAME CLASS', function() {
   beforeEach(() => { 
     game = new Game(data)
-    player1 = new Player('Kirk', 1);
-    player2 = new Player('Ayla', 2);
+    player1 = new Player('Kirk');
+    player2 = new Player('Ayla');
     round = new Round( );
     turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });
@@ -44,13 +44,12 @@ describe('GAME CLASS', function() {
     expect(game.round).to.be.an.instanceof(Round);
   });
   
-  it.only('Should be able to instantiate player1 and player2', () => {
+  it('Should be able to instantiate player1 and player2', () => {
     game.makePlayers('Wilson', 'Susan');
     
     expect(game.player1.name).to.equal('Wilson');
     expect(game.player2.name).to.equal('Susan');
     expect(game.player1.score).to.equal(0);
     expect(game.player2.score).to.equal(0);
-    expect(game.player1.id).to.equal('player1');
   });
 })

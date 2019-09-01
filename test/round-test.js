@@ -14,8 +14,8 @@ turn;
 
 describe('ROUND CLASS', function() {
   beforeEach(() => { 
-    player1 = new Player('Kirk', 1);
-    player2 = new Player('Ayla', 2);
+    player1 = new Player('Kirk');
+    player2 = new Player('Ayla');
     round = new Round( );
     turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });

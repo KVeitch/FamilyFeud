@@ -39,8 +39,8 @@ class Game {
   }
 
   makePlayers(player1Name, player2Name) {
-    this.player1 = new Player(player1Name, 1)
-    this.player2 = new Player(player2Name, 2)
+    this.player1 = new Player(player1Name)
+    this.player2 = new Player(player2Name)
   }
 
 }
