@@ -22,15 +22,16 @@ describe('GAME CLASS', function() {
     turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });
 
-  it.only('Should start with no surveys', function() {
-  	expect(game.surveys.length).to.equal(0)
+  it('Should start with no surveys', function() {
+    expect(game.surveys.length).to.equal(0)
   });
 
-  it.only('Should get 3 surveys', function() {
+  it('Should get 3 surveys', function() {
     game.getSurveys()
-  	expect(game.surveys.length).to.equal(3)
+    expect(game.surveys.length).to.equal(3)
   });
 
+  
   
 
 
