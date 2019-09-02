@@ -14,8 +14,8 @@ class Turn {
     let playerGuess = $('.player1__guess').val().toLowerCase();
     if (this.answerArr.includes(playerGuess)) {
       isCorrect = true;
-      this.giveFeedback(isCorrect, playerGuess)
       index = this.answerArr.findIndex(answer => answer === playerGuess);
+      this.giveFeedback(isCorrect, this.answers[index])
     }
     return ({index, isCorrect})
   }
