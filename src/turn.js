@@ -26,7 +26,7 @@ class Turn {
       //   <p>You won /$${answer.respondents} in CA$H MONEY!</p>
       //   <p>Roger has your $$$</p>
       //   <p>I think he's gonna keep it.</p>`
-      )
+      // )
     } else {
       domUpdates.badFeedback()
       // $('.round-feedback').append(
