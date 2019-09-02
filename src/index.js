@@ -24,7 +24,7 @@ game.getSurveys();
 
 function player1ButtonHelper() {
   game.round.turn.hasAnswer();
-  game.round.turn.giveFeedback();
+  game.round.turn.giveFeedback(); // this needs a conditional that determines whether it is the end of the round or not 
 }
 
 function playerButtonHelper() {
