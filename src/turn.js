@@ -22,23 +22,9 @@ class Turn {
 
   giveFeedback(answer) {
     this.hasAnswer.index;
-    if (this.hasAnswer.isCorrect) {
-      domUpdates.goodFeedback(answer)
-      // $('.round-feedback').append(
-      //   `<h3>Nice Job</h3>
-      //   <p>You won /$${answer.respondents} in CA$H MONEY!</p>
-      //   <p>Roger has your $$$</p>
-      //   <p>I think he's gonna keep it.</p>`
-      // )
-    } else {
-      domUpdates.badFeedback()
-      // $('.round-feedback').append(
-      //   `<h3>No!</h3>
-      //   <p>You get nothing!</p>`
+    this.hasAnswer.isCorrect ? domUpdates.goodFeedback(answer) : domUpdates.badFeedback();
     };
-  }
-    // you're answer is wrong now CardiB is sad for you
-    // you're right XX% of people 
+
 
   changePlayer(currentPlayer) {}
   //fire off hide show
@@ -54,6 +40,3 @@ class Turn {
 
 export default Turn;
 
-// if (typeof module !== 'undefined') {
-//   module.exports = Turn;
-// }

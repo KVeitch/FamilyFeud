@@ -24,7 +24,7 @@ game.getSurveys();
 
 function player1ButtonHelper() {
   game.round.turn.hasAnswer();
-  game.round.turn.giveFeedback()
+  game.round.turn.giveFeedback();
 }
 
 function playerButtonHelper() {

@@ -27,11 +27,21 @@ const domUpdates = {
     },
 
     badFeedback(answer) {
-        console.log('potato')
-    },
+        $('.round-feedback').append(
+              `<h3>No!</h3>
+              <p>You get nothing!</p>`
+        )
+        $('.round-feedback').toggle('none')
+},
 
     goodFeedback(answer) {
-        console.log('hamster')
+        $('.round-feedback').append(
+              `<h3>Nice Job</h3>
+              <p>You won /$${answer.respondents} in CA$H MONEY!</p>
+              <p>Roger has your $$$</p>
+              <p>I think he's gonna keep it.</p>`
+            )
+        $('.round-feedback').toggle('none')
     }
 
 }
