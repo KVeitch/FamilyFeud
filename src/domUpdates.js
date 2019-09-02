@@ -19,7 +19,12 @@ const domUpdates = {
         $('#jq-answer0').text(game.round.turn.answers[0].answer)
         $('#jq-answer1').text(game.round.turn.answers[1].answer)
         $('#jq-answer2').text(game.round.turn.answers[2].answer)
+    },
+    revealAnswers(index) {
+    $(`#jq-answer${index}`).toggle('hidden');
+    $(`#jq-dollar${index}`).toggle('hidden');
     }
+
 }
 
 export default domUpdates 
