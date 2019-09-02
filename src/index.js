@@ -4,7 +4,6 @@ import domUpdates from './domUpdates';
 import './css/base.scss';
 import './images/turing-logo.png'
 import data from '../test/sample-data-3surveys';
-
 import Game from './game';
 let game = new Game(data);
 

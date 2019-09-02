@@ -8,7 +8,7 @@ class Turn {
     this.answerArr = answers.map(answer => answer.answer.toLowerCase());
   }
 
-  hasAnswer(answer) {
+  hasAnswer() {
     let index; 
     let isCorrect = false;
     let playerGuess = $('.player1__guess').val().toLowerCase();
@@ -22,6 +22,7 @@ class Turn {
   
   
   giveFeedback(isCorrect, answer) {
+    //Need to add a conditional statement that checks whether this is the last turn in the round
     isCorrect ? domUpdates.goodFeedback(answer) : domUpdates.badFeedback();
   }
 
