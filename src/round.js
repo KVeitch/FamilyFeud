@@ -1,4 +1,4 @@
-const Turn = require('./turn');
+import Turn from './Turn';
 
 class Round {
 	constructor(survey, player1, player2) {
@@ -21,7 +21,7 @@ class Round {
 	}
 
 	makeNewTurn() {
-	this.turn = new Turn(this.survey.answers, )
+	this.turn = new Turn(this.survey.answers, this.currentPlayer)
 	}
 
 	removeCorrectAnswer() {
@@ -29,6 +29,4 @@ class Round {
 	}
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = Round;
-}
+export default Round;

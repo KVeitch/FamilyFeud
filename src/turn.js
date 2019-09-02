@@ -1,3 +1,6 @@
+import domUpdates from './domUpdates';
+
+
 class Turn {
   constructor(answers, player) {
     this.answers = answers; //array of answer objects with correct surveyId
@@ -47,14 +50,10 @@ class Turn {
     //call domUpdates.postScore(this.player)
   }
 
-
-
-
-
-
 }
 
+export default Turn;
 
-if (typeof module !== 'undefined') {
-  module.exports = Turn;
-}
+// if (typeof module !== 'undefined') {
+//   module.exports = Turn;
+// }

@@ -20,9 +20,18 @@ const domUpdates = {
         $('#jq-answer1').text(game.round.turn.answers[1].answer)
         $('#jq-answer2').text(game.round.turn.answers[2].answer)
     },
+
     revealAnswers(index) {
     $(`#jq-answer${index}`).toggle('hidden');
     $(`#jq-dollar${index}`).toggle('hidden');
+    },
+
+    badFeedback(answer) {
+        console.log('potato')
+    },
+
+    goodFeedback(answer) {
+        console.log('hamster')
     }
 
 }

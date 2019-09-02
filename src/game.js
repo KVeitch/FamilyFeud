@@ -1,4 +1,4 @@
-const Round = require('../src/round');
+import Round from './Round';
 const FastMoney = require('../src/fastMoney');
 const Player = require('../src/player');
 
@@ -46,6 +46,4 @@ class Game {
 }
 
 
-if (typeof module !== 'undefined') {
-  module.exports = Game;
-}
+export default Game;
