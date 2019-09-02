@@ -6,6 +6,10 @@ class Round {
 		this.player1Name = player1;
 		this.player2Name = player2;
 		this.turn = {};
+		this.currentPlayer = 1;
+	}
+	togglePlayer() {
+		this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
 	}
 
 	getRoundWinner() {
@@ -17,8 +21,7 @@ class Round {
 	}
 
 	makeNewTurn() {
-	this.turn = new Turn(this.survey.answers, this.player1Name, this.player2Name)
-	console.log(this.turn)
+	this.turn = new Turn(this.survey.answers, )
 	}
 
 	removeCorrectAnswer() {

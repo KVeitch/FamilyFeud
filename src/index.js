@@ -23,7 +23,8 @@ $('.player1__button').click(player1ButtonHelper);
 game.getSurveys();
 
 function player1ButtonHelper() {
-	game.round.turn.hasAnswer();
+  game.round.turn.hasAnswer();
+  game.round.turn.giveFeedback()
 }
 
 function playerButtonHelper() {

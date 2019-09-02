@@ -165,5 +165,20 @@ main {
 
 		}
 	}
+
+	.round-feedback {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		z-index: 10;
+		background-color: #dcdcbb;
+		width: 50%;
+		height: 30%;
+		min-height: 250px;
+		top: 40%;
+		left: 25%;
+		border: 10px double #244c3c;
+	}
+
 }
 
