@@ -14,16 +14,19 @@ class Turn {
     let playerGuess = $('.player1__guess').val().toLowerCase();
     if (this.answerArr.includes(playerGuess)) {
       isCorrect = true;
-      index = this.answerArr.findIndex(answer => answer === playerGuess);
-      this.giveFeedback(isCorrect, this.answers[index])
+      index = this.answerArr.findIndex(answer => answer === playerGuess)
+      this.answerArr.splice([index], 1);
     }
+    this.giveFeedback(isCorrect, this.answers[index])
     return ({index, isCorrect})
   }
   
   
   giveFeedback(isCorrect, answer) {
-    //Need to add a conditional statement that checks whether this is the last turn in the round
-    isCorrect ? domUpdates.goodFeedback(answer) : domUpdates.badFeedback();
+    if (this.answerArr.length === 1 ) {
+      isCorrect ? domUpdates.goodFeedback(answer) : domUpdates.badFeedback();
+    }
+
   }
 
 

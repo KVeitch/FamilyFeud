@@ -7,12 +7,7 @@ const Round = require('../src/round');
 const Turn = require('../src/turn');
 
 
-let 
-game,
-player1, 
-player2, 
-round,
-turn;
+let game,player1, player2, round, turn;
 
 
 
