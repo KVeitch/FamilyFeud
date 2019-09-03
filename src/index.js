@@ -23,12 +23,14 @@ $('.jq-submit').click(playerSubmitButtonHelper);
 
 function playerSubmitButtonHelper(e) {
   let currentPlayer = game[`player${game.round.currentPlayer}`]
-  console.log('CP: ',currentPlayer)
   let answer = game.round.turn.hasAnswer(e);
   game.round.turn.giveFeedback(answer);
   game.round.turn.increaseScore(answer, currentPlayer);
   domUpdates.postScore(game, game.round.currentPlayer);
+  domUpdates.clearGuessInput();
+  domUpdates.removeFeedback();
   game.round.togglePlayer();
+
 }
 
 function playerButtonHelper() {

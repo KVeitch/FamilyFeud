@@ -8,10 +8,11 @@ class Turn {
     this.answerArr = answers.map(answer => answer.answer.toLowerCase());
   }
 
-  hasAnswer(event) {
+  hasAnswer() {
     let index; 
     let isCorrect = false;
-    let playerGuess = $('.player1__guess').val().toLowerCase();
+    let playerGuess = $('.jq-submit').siblings('.jq-guess').val().toLowerCase();
+    console.log(playerGuess)
     if (this.answerArr.includes(playerGuess)) {
       isCorrect = true;
       index = this.answerArr.findIndex(answer => answer === playerGuess)
