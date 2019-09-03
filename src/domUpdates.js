@@ -58,7 +58,12 @@ const domUpdates = {
 
   clearGuessInput() {
     $('.jq-guess').val('');
-  }
+  },
+
+  togglePlayerDisplays() {
+    $('.inputs__player1').toggleClass('hidden');
+    $('.inputs__player2').toggleClass('hidden');
+  },
 }
 
 export default domUpdates 

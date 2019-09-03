@@ -120,22 +120,16 @@ main {
 		background-color: $light-green;
 		border: 10px double #244c3c;
 
-		.inputs__player1 {
-			margin-top: 20%;
-		}
-
+		.inputs__player1,
 		.inputs__player2 {
 			margin-top: 20%;
 		}
 
-		.player1__button {
-			height: 40%;
-			width: 30%;
-			background-color: #526c5b;
-			border: 4px inset #244c3c;
-			color: #dcdcbb;
+		.hidden {
+			display: none;
 		}
 
+		.player1__button, 
 		.player2__button {
 			height: 40%;
 			width: 30%;
@@ -144,15 +138,10 @@ main {
 			color: #dcdcbb;
 		}
 
-		.player1__guess {
-			width: 60%;
-			height: 35%;
-
-		}
+		.player1__guess,
 		.player2__guess{
 			width: 60%;
 			height: 35%;
-
 		}
 
 		.inputs__reset {
