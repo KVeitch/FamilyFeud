@@ -8,7 +8,7 @@ class Turn {
     this.answerArr = answers.map(answer => answer.answer.toLowerCase());
   }
 
-  hasAnswer() {
+  hasAnswer(event) {
     let index; 
     let isCorrect = false;
     let playerGuess = $('.player1__guess').val().toLowerCase();
@@ -17,26 +17,21 @@ class Turn {
       index = this.answerArr.findIndex(answer => answer === playerGuess)
       this.answerArr.splice([index], 1);
     }
-    this.giveFeedback(isCorrect, this.answers[index])
+    return {isCorrect:isCorrect, answer:this.answers[index]};
   }
   
   
-  giveFeedback(isCorrect, answer) {
-    if (this.answerArr.length === 1 ) {
-      isCorrect ? domUpdates.goodFeedback(answer) : domUpdates.badFeedback();
-    }
-
+  giveFeedback(answerObj) {
+    answerObj.isCorrect ? domUpdates.goodFeedback(answerObj.answer) : domUpdates.badFeedback();
   }
-
 
   changePlayer(currentPlayer) {}
   //fire off hide show
 
   //multiplyer will need it change for fast money
   //currentplayer from round.currentPlayer
-  increaseScore(multiplier = 1, answer) {
-    `player${this.player}`.score += multiplier * answer.respondents;
-    //call domUpdates.postScore(this.player)
+  increaseScore(answer, player, multiplier = 1) {
+    player.score = player.score + multiplier * answer.answer.respondents
   }
 
 }

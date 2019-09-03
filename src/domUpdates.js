@@ -42,8 +42,11 @@ const domUpdates = {
             <p>I think he's gonna keep it.</p>`
     )
     $('.round-feedback').toggle('none')
+  },
+  
+  postScore(game, playerNumber) {
+    $(`.player${playerNumber}__score`).text(game[`player${playerNumber}`].score);
   }
-    
 
 }
 
