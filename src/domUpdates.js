@@ -58,7 +58,14 @@ const domUpdates = {
 
   clearGuessInput() {
     $('.jq-guess').val('');
+  },
+
+  enableBtnState() {
+    // console.log('hi')
   }
+
+  
+
 }
 
 export default domUpdates 
