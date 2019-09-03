@@ -52,7 +52,6 @@ const domUpdates = {
     },3000)
   },
 
-
   postScore(game, playerNumber) {
     $(`.player${playerNumber}__score`).text(game[`player${playerNumber}`].score);
   },
@@ -65,6 +64,7 @@ const domUpdates = {
     $('.inputs__player1').toggleClass('hidden');
     $('.inputs__player2').toggleClass('hidden');
   },
+
 }
 
 export default domUpdates 
