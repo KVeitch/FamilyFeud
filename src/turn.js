@@ -18,7 +18,6 @@ class Turn {
       this.answerArr.splice([index], 1);
     }
     this.giveFeedback(isCorrect, this.answers[index])
-    return ({index, isCorrect})
   }
   
   
