@@ -12,7 +12,7 @@ class Turn {
     let index; 
     let isCorrect = false;
     let playerGuess = $('.jq-submit').siblings('.jq-guess').val().toLowerCase();
-    console.log(playerGuess)
+
     if (this.answerArr.includes(playerGuess)) {
       isCorrect = true;
       index = this.answerArr.findIndex(answer => answer === playerGuess)
