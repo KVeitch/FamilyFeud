@@ -18,7 +18,7 @@ class Turn {
       index = this.answerArr.findIndex(answer => answer === playerGuess)
       this.answerArr.splice([index], 1);
     }
-    return {isCorrect:isCorrect, answer:this.answers[index]};
+    return {isCorrect:isCorrect, answer:this.answers[index], index:index};
   }
   
   giveFeedback(answerObj) {

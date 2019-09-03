@@ -30,6 +30,7 @@ function playerSubmitButtonHelper() {
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
   domUpdates.removeFeedback();
+  checkToRevealAnswer(answer);
   game.round.togglePlayer();
   game.round.makeNewTurn();
   domUpdates.togglePlayerDisplays();
@@ -45,6 +46,10 @@ function playerButtonHelper() {
     domUpdates.appendAnswers(game);
   }
 
-
-
+function checkToRevealAnswer(answer) {
+  console.log('for kirk: ', answer.index)
+  if (answer.isCorrect) {
+    domUpdates.revealAnswers(answer.index)
+  }
+}
 
