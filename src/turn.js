@@ -11,27 +11,22 @@ class Turn {
   hasAnswer() {
     let index; 
     let isCorrect = false;
-    let playerGuess = $('.jq-submit').siblings('.jq-guess').val().toLowerCase();
+    let playerGuess = $('.player1__guess').val() ? $('.player1__guess').val().toLowerCase() : $('.player2__guess').val().toLowerCase();
 
     if (this.answerArr.includes(playerGuess)) {
       isCorrect = true;
       index = this.answerArr.findIndex(answer => answer === playerGuess)
       this.answerArr.splice([index], 1);
     }
-    return {isCorrect:isCorrect, answer:this.answers[index]};
+    return {isCorrect:isCorrect, answer:this.answers[index], index:index};
   }
-  
   
   giveFeedback(answerObj) {
     answerObj.isCorrect ? domUpdates.goodFeedback(answerObj.answer) : domUpdates.badFeedback();
   }
 
-  changePlayer(currentPlayer) {}
-  //fire off hide show
-
-  //multiplyer will need it change for fast money
-  //currentplayer from round.currentPlayer
   increaseScore(answer, player, multiplier = 1) {
+    console.log(answer.answer)
     player.score = player.score + multiplier * answer.answer.respondents
   }
 

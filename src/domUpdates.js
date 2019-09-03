@@ -15,13 +15,14 @@ const domUpdates = {
   },
 
   appendAnswers(game) {
-    console.log(game.round.turn.answers[0])
+    // console.log(game.round.turn.answers[0])
     $('#jq-answer0').text(game.round.turn.answers[0].answer)
     $('#jq-answer1').text(game.round.turn.answers[1].answer)
     $('#jq-answer2').text(game.round.turn.answers[2].answer)
   },
 
   revealAnswers(index) {
+    console.log('reveal: ', index)
     $(`#jq-answer${index}`).toggle('hidden');
     $(`#jq-dollar${index}`).toggle('hidden');
   },
@@ -51,7 +52,6 @@ const domUpdates = {
     },3000)
   },
 
-
   postScore(game, playerNumber) {
     $(`.player${playerNumber}__score`).text(game[`player${playerNumber}`].score);
   },
@@ -60,11 +60,10 @@ const domUpdates = {
     $('.jq-guess').val('');
   },
 
-  enableBtnState() {
-    // console.log('hi')
-  }
-
-  
+  togglePlayerDisplays() {
+    $('.inputs__player1').toggleClass('hidden');
+    $('.inputs__player2').toggleClass('hidden');
+  },
 
 }
 
