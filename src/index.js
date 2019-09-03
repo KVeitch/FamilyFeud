@@ -30,7 +30,7 @@ function playerSubmitButtonHelper(e) {
   domUpdates.clearGuessInput();
   domUpdates.removeFeedback();
   game.round.togglePlayer();
-
+  game.round.makeNewTurn();
 }
 
 function playerButtonHelper() {
