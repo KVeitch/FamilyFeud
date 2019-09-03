@@ -42,9 +42,23 @@ const domUpdates = {
             <p>I think he's gonna keep it.</p>`
     )
     $('.round-feedback').toggle('none')
-  }
-    
+  },
+  
+  removeFeedback() {
+    setTimeout(()=> {
+      $('.round-feedback').toggle('none');
+      $('.round-feedback').html('');
+    },3000)
+  },
 
+
+  postScore(game, playerNumber) {
+    $(`.player${playerNumber}__score`).text(game[`player${playerNumber}`].score);
+  },
+
+  clearGuessInput() {
+    $('.jq-guess').val('');
+  }
 }
 
 export default domUpdates 

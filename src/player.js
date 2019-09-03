@@ -5,7 +5,7 @@ class Player {
   }
 
   updateScore(points) {
-    this.score += points;
+    // this.score += points;
   }
 }
 

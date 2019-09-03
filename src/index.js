@@ -6,6 +6,7 @@ import './images/turing-logo.png'
 import data from '../test/sample-data-3surveys';
 import Game from './game';
 let game = new Game(data);
+game.getSurveys();
 
 
 
@@ -15,14 +16,21 @@ $('.inputs__reset').click(function() {
 
 $('.player__button').click(playerButtonHelper);
 
-$('.player1__button').click(player1ButtonHelper);
+$('.jq-submit').click(playerSubmitButtonHelper);
 
 // $('.player2__button').click(player2ButtonHelper);
 
-game.getSurveys();
 
-function player1ButtonHelper() {
-  game.round.turn.hasAnswer();
+function playerSubmitButtonHelper(e) {
+  let currentPlayer = game[`player${game.round.currentPlayer}`]
+  let answer = game.round.turn.hasAnswer(e);
+  game.round.turn.giveFeedback(answer);
+  game.round.turn.increaseScore(answer, currentPlayer);
+  domUpdates.postScore(game, game.round.currentPlayer);
+  domUpdates.clearGuessInput();
+  domUpdates.removeFeedback();
+  game.round.togglePlayer();
+
 }
 
 function playerButtonHelper() {
