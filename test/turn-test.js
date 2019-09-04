@@ -16,7 +16,7 @@ let game, player1, player2, round, turn;
 
 describe('TURN CLASS', function() {
   beforeEach(() => {
-    console.log(Game)
+    // console.log(Game)
     game = new Game(data);
     game.getSurveys();
     round = new Round(game.surveys[0]);
