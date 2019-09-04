@@ -29,18 +29,20 @@ const domUpdates = {
 
   badFeedback() {
     $('.round-feedback').append(
-      `<h3>No!</h3>
-            <p>You get nothing!</p>`
+      `<div class='feedback__style'>
+          <h3>No!</h3>
+          <p class='bad__feedback2'>You get nothing!</p>
+        </div>`
     )
     $('.round-feedback').toggle('none')
   },
 
   goodFeedback(answer) {
     $('.round-feedback').append(
-      `<h3>Nice Job</h3>
-            <p>You won $${answer.respondents} in CA$H MONEY!</p>
-            <p>Roger has your $$$</p>
-            <p>I think he's gonna keep it.</p>`
+      `<div class='feedback__style'>
+          <h3>$$$ Nice Job $$$</h3>
+          <p>You won $${answer.respondents} in CA$H MONEY!</p>
+        </div>`
     )
     $('.round-feedback').toggle('none')
   },
@@ -53,7 +55,7 @@ const domUpdates = {
   },
 
   postScore(game, playerNumber) {
-    $(`.player${playerNumber}__score`).text(game[`player${playerNumber}`].score);
+    $(`.player${playerNumber}__score`).text(`$ ${game[`player${playerNumber}`].score}`);
   },
 
   clearGuessInput() {

@@ -9,11 +9,18 @@ body {
 	font-family: $main-typeface;
 	background-image: url('../images/background-img.png');  //not working at the moment
 }
+
 .display-typeface {
 	font-family: $display-typeface;
 	color: $dark-green;
 	font-size: 2em;
 	letter-spacing: 1.4px;
+}
+
+.main-typeface {
+	font-family: $main-typeface;
+	color: $dark-green;
+	font-size: 1.5em;
 }
 
 header {
@@ -26,7 +33,7 @@ header {
 
   .header__container {
     display: flex;
-    justify-content: space-around;
+	justify-content: space-around;
   }
 
 }
@@ -78,9 +85,10 @@ main {
 		position: absolute;
 		z-index: 20;
 		background-color: #dcdcbb;
-		width: 50%;
+		width: 50%; 
 		height: 30%;
 		min-height: 250px;
+		min-width: 490px; 
 		top: 40%;
 		left: 25%;
 		border: 10px double #244c3c;
@@ -122,7 +130,9 @@ main {
 
 		.inputs__player1,
 		.inputs__player2 {
-			margin-top: 20%;
+			margin-top: 5%;
+			width: 90%;
+			height: 50px;
 		}
 
 		.hidden {
@@ -131,8 +141,8 @@ main {
 
 		.player1__button, 
 		.player2__button {
-			height: 40%;
-			width: 30%;
+			height: 25px;
+			width: 90px;
 			background-color: #526c5b;
 			border: 4px inset #244c3c;
 			color: #dcdcbb;
@@ -140,7 +150,7 @@ main {
 
 		.player1__guess,
 		.player2__guess{
-			width: 60%;
+			width: 63%;
 			height: 35%;
 		}
 
@@ -169,5 +179,23 @@ main {
 		border: 10px double #244c3c;
 	}
 
+	.feedback__style {
+		display: flex;
+		text-align: center;
+		flex-direction: column;
+		margin: 5% 10% 10% 10%;
+
+		h3 {
+			font-family: $display-typeface;
+			color: $dark-green;
+			font-size: 2em;
+		}
+
+		p {
+			font-family: $main-typeface;
+			color: $dark-green;
+			font-size: 1.5em;	
+		}
+	}	
 }
 
