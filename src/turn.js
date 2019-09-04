@@ -26,9 +26,8 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
-    console.log(answer.answer)
-    player.score = player.score + multiplier * answer.answer.respondents
-  }
+    answer.answer === undefined ? null : player.score = player.score + multiplier * answer.answer.respondents
+}
 
 }
 
