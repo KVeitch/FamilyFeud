@@ -19,11 +19,12 @@ $('.player__button').click(playerButtonHelper);
 $('.jq-submit').click(playerSubmitButtonHelper);
 
 // $('.player2__button').click(player2ButtonHelper);
-$('.jq-guess').keyup(checkPlayerSubmitBtn);
+
 
 function playerSubmitButtonHelper() {
   let currentPlayer = game[`player${game.round.currentPlayer}`]
   let answer = game.round.turn.hasAnswer();
+  
   game.round.turn.giveFeedback(answer);
   game.round.turn.increaseScore(answer, currentPlayer);
   domUpdates.postScore(game, game.round.currentPlayer);
@@ -33,7 +34,6 @@ function playerSubmitButtonHelper() {
   game.round.togglePlayer();
   game.round.makeNewTurn();
   domUpdates.togglePlayerDisplays();
-
 }
 
 function playerButtonHelper() {
