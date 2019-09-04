@@ -20,7 +20,6 @@ let
 game,
 player1, 
 player2, 
-round,
 turn;
 
 describe('GAME CLASS', function() {
@@ -28,19 +27,21 @@ describe('GAME CLASS', function() {
     game = new Game(data)
     player1 = new Player('Kirk');
     player2 = new Player('Ayla');
-    round = new Round();
-    turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
+    // round = new Round(game.surveys[0], player1.name, player2.name);
+    // turn = new Turn(round.survey.answers, round.currentPlayer);
+    // console.log(turn)
   });
-
+  
   it('Should start with no surveys', function() {
-    expect(game.surveys.length).to.equal(0)
+    let game2 = new Game();
+    expect(game2.surveys.length).to.equal(0)
   });
-
+  
   it('Should get 3 surveys', function() {
-    game.getSurveys()
+    game.getSurveys();
     expect(game.surveys.length).to.equal(3)
   });
-
+  
   it('Should keep track of rounds', function() {
     expect(game.roundCount).to.equal(0);
     game.startRound();
@@ -49,9 +50,15 @@ describe('GAME CLASS', function() {
     expect(game.roundCount).to.equal(2);
   });
   
-  it('Should be able to instantiate a new round', () => {
+  it.only('Should be able to instantiate a new round', () => {
+    game.makePlayers('Kirk', 'Ayla')
+    game.getSurveys();
     game.startRound();
-    expect(game.round).to.be.an.instanceof(Round);
+    console.log('ROUND! ',Round)
+
+    // expect(game.round).to.be.an.instanceOf(Round);
+    console.log("hi: ", game.round instanceof Round)
+    expect(game.round).to.be.an.instanceof(Round)
   });
   
   it('Should be able to instantiate player1 and player2', () => {

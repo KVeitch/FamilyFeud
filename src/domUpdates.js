@@ -15,6 +15,10 @@ const domUpdates = {
   },
 
   appendAnswers(game) {
+<<<<<<< HEAD
+=======
+    // console.log(game.round.turn.answers[0].respondents)
+>>>>>>> master
     $('#jq-answer0').text(`${game.round.turn.answers[0].answer}`);
     $('#jq-answer1').text(`${game.round.turn.answers[1].answer}`);
     $('#jq-answer2').text(`${game.round.turn.answers[2].answer}`);
