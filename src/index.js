@@ -22,21 +22,24 @@ $('.jq-submit').click(playerSubmitButtonHelper);
 
 
 function playerSubmitButtonHelper() {
-  let currentPlayer = game[`player${game.round.currentPlayer}`]
-  let answer = game.round.turn.hasAnswer();
-  
-  game.round.turn.giveFeedback(answer);
-  game.round.turn.increaseScore(answer, currentPlayer);
-  domUpdates.postScore(game, game.round.currentPlayer);
-  domUpdates.clearGuessInput();
-  domUpdates.removeFeedback();
-  checkToRevealAnswer(answer);
-  game.round.togglePlayer();
-  game.round.makeNewTurn();
-  domUpdates.togglePlayerDisplays();
+  if($('.player1__guess').val() || $('.player2__guess').val()) {
+    let currentPlayer = game[`player${game.round.currentPlayer}`]
+    let answer = game.round.turn.hasAnswer();
+    
+    game.round.turn.giveFeedback(answer);
+    game.round.turn.increaseScore(answer, currentPlayer);
+    domUpdates.postScore(game, game.round.currentPlayer);
+    domUpdates.clearGuessInput();
+    domUpdates.removeFeedback();
+    checkToRevealAnswer(answer);
+    game.round.togglePlayer();
+    game.round.makeNewTurn();
+    domUpdates.togglePlayerDisplays();
+  }
 }
 
 function playerButtonHelper() {
+  if( $('.player__input1').val() &&  $('.player__input2').val()) {
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
     domUpdates.appendNames(game);
@@ -45,6 +48,7 @@ function playerButtonHelper() {
     game.round.makeNewTurn();
     domUpdates.appendAnswers(game);
   }
+}
 
 function checkToRevealAnswer(answer) {
   if (answer.isCorrect) {
