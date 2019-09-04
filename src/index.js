@@ -34,9 +34,12 @@ function playerSubmitButtonHelper() {
   game.round.togglePlayer();
   game.round.makeNewTurn();
   domUpdates.togglePlayerDisplays();
+
 }
 
 function playerButtonHelper() {
+  console.log('p1: ',$('.player__input1').val(), 'p2: ',$('.player__input2').val())
+  if( $('.player__input1').val() &&  $('.player__input2').val()) {
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
     domUpdates.appendNames(game);
@@ -45,6 +48,7 @@ function playerButtonHelper() {
     game.round.makeNewTurn();
     domUpdates.appendAnswers(game);
   }
+}
 
 function checkToRevealAnswer(answer) {
   if (answer.isCorrect) {
