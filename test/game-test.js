@@ -1,10 +1,20 @@
 import chai from 'chai';
+import domUpdates from '../src/domUpdates';
 const expect = chai.expect;
-const data = require('./survey-sample-data');
-const Game = require('../src/game');
-const Player = require('../src/player');
-const Round = require('../src/round');
-const Turn = require('../src/turn');
+// const data = require('./survey-sample-data');
+import data from './sample-data-3surveys';
+// const Game = require('../src/game');
+// const Player = require('../src/player');
+// const Round = require('../src/round');
+// const Turn = require('../src/turn');
+import Game from '../src/game';
+import Player from '../src/player'
+import Round from '../src/round';
+import FastMoney from '../src/fastMoney'
+import Turn from '../src/turn';
+const spies = require('chai-spies');
+chai.use(spies);
+chai.spy.on(domUpdates, ['appendNames', 'appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays' ]);
 
 let 
 game,
@@ -18,7 +28,7 @@ describe('GAME CLASS', function() {
     game = new Game(data)
     player1 = new Player('Kirk');
     player2 = new Player('Ayla');
-    round = new Round( );
+    round = new Round();
     turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });
 
@@ -52,4 +62,10 @@ describe('GAME CLASS', function() {
     expect(game.player1.score).to.equal(0);
     expect(game.player2.score).to.equal(0);
   });
+
+  it('should fire one time', () => {
+
+    domUpdates.appendNames(game);
+    expect(domUpdates.appendNames(game)).to.be.called(1);
+  })
 })

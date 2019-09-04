@@ -1,23 +1,28 @@
 import chai from 'chai';
 const expect = chai.expect;
-const data = require('./survey-sample-data');
-const Game = require('../src/game');
-const Player = require('../src/player');
-const Round = require('../src/round');
-const Turn = require('../src/turn');
+import data from './sample-data-3surveys';
+// const data = require('./test/sample-data-3survey');
+import Game from '../src/game';
+import Player from '../src/player'
+import Round from '../src/round';
+import Turn from '../src/turn';
+// const Game = require('../src/game');
+// const Player = require('../src/player');
+// const Round = require('../src/round');
+// const Turn = require('../src/turn');
 
 
-let game,player1, player2, round, turn;
-
-
+let game, player1, player2, round, turn;
 
 describe('TURN CLASS', function() {
   beforeEach(() => {
-    game = new Game( );
-    round = new Round( );
-    player1 = new Player( );
-    player2 = new Player( );
-    turn = new Turn( );
+    console.log(Game)
+    game = new Game(data);
+    game.getSurveys();
+    round = new Round(game.surveys[0]);
+    player1 = new Player('Kirk');
+    player2 = new Player('Ayla');
+    turn = new Turn(round.survey.answers, round.currentPlayer);
   })
 
   it('check to see if the answers to a survey contain the player answer', function() {
