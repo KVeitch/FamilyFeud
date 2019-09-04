@@ -15,16 +15,20 @@ const domUpdates = {
   },
 
   appendAnswers(game) {
-    // console.log(game.round.turn.answers[0])
-    $('#jq-answer0').text(game.round.turn.answers[0].answer)
-    $('#jq-answer1').text(game.round.turn.answers[1].answer)
-    $('#jq-answer2').text(game.round.turn.answers[2].answer)
+    console.log(game.round.turn.answers[0].respondents)
+    $('#jq-answer0').text(`${game.round.turn.answers[0].answer}`);
+    $('#jq-answer1').text(`${game.round.turn.answers[1].answer}`);
+    $('#jq-answer2').text(`${game.round.turn.answers[2].answer}`);
+    $('#jq-value0').text(`$${game.round.turn.answers[0].respondents}`)
+    $('#jq-value1').text(`$${game.round.turn.answers[1].respondents}`)
+    $('#jq-value2').text(`$${game.round.turn.answers[2].respondents}`)
   },
 
   revealAnswers(index) {
     console.log('reveal: ', index)
     $(`#jq-answer${index}`).toggle('hidden');
     $(`#jq-dollar${index}`).toggle('hidden');
+    $(`#jq-value${index}`).toggle('hidden');
   },
 
   badFeedback() {
