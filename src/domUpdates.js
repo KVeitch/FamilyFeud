@@ -15,10 +15,6 @@ const domUpdates = {
   },
 
   appendAnswers(game) {
-<<<<<<< HEAD
-=======
-    // console.log(game.round.turn.answers[0].respondents)
->>>>>>> master
     $('#jq-answer0').text(`${game.round.turn.answers[0].answer}`);
     $('#jq-answer1').text(`${game.round.turn.answers[1].answer}`);
     $('#jq-answer2').text(`${game.round.turn.answers[2].answer}`);
@@ -28,10 +24,21 @@ const domUpdates = {
   },
 
   revealAnswers(index) {
-    // console.log('reveal: ', index)
     $(`#jq-answer${index}`).toggle('hidden');
     $(`#jq-dollar${index}`).toggle('hidden');
     $(`#jq-value${index}`).toggle('hidden');
+  },
+
+  hideAnswers() {
+    $('#jq-answer0').toggle('hidden');
+    $('#jq-dollar0').toggle('hidden');
+    $('#jq-value0').toggle('hidden');
+    $('#jq-answer1').toggle('hidden');
+    $('#jq-dollar1').toggle('hidden');
+    $('#jq-value1').toggle('hidden');
+    $('#jq-answer2').toggle('hidden');
+    $('#jq-dollar2').toggle('hidden');
+    $('#jq-value2').toggle('hidden');
   },
 
   badFeedback() {

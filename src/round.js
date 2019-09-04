@@ -8,7 +8,6 @@ class Round {
 		this.player2Name = player2;
 		this.turn = {};
 		this.currentPlayer = 1;
-		this.counter = 0; 
 		this.thisArr = []
 	}
 
@@ -17,11 +16,9 @@ class Round {
 	}
 
 	getRoundWinner(game) {
-		// determines highest player score
 		if(this.thisArr.length === 3) {
+			game.roundCounter++
 			let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
-			console.log(winner);
-			// return winner
 			domUpdates.displayRoundWinner(winner)
 		}
 	}

@@ -35,9 +35,6 @@ function playerSubmitButtonHelper() {
     game.round.togglePlayer();
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
-    // game.round.getRoundWinner(game);
-    // let winner = game.round.getRoundWinner(game);
-    // domUpdates.displayRoundWinner(winner);
   }
 }
 
