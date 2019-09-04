@@ -33,7 +33,6 @@ class Game {
 
   startRound() {
     this.roundCount++;
-    
     if(this.roundCount === 3) {
       this.round = new FastMoney(this.surveys[2]);
     } else {

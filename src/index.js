@@ -24,9 +24,9 @@ $('.jq-submit').click(playerSubmitButtonHelper);
 function playerSubmitButtonHelper() {
   if($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
-    let answer = game.round.turn.hasAnswer();
+    let answer = game.round.turn.hasAnswer(game.round);
     
-    game.round.turn.giveFeedback(answer);
+    game.round.turn.giveFeedback(answer, game);
     game.round.turn.increaseScore(answer, currentPlayer);
     domUpdates.postScore(game, game.round.currentPlayer);
     domUpdates.clearGuessInput();
@@ -35,6 +35,9 @@ function playerSubmitButtonHelper() {
     game.round.togglePlayer();
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
+    // game.round.getRoundWinner(game);
+    // let winner = game.round.getRoundWinner(game);
+    // domUpdates.displayRoundWinner(winner);
   }
 }
 
