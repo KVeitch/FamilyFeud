@@ -4,6 +4,4 @@ class FastMoney {
   }
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = FastMoney;
-}
+export default FastMoney;

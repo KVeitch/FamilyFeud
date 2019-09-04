@@ -1,9 +1,12 @@
 import chai from 'chai';
 const expect = chai.expect;
 const data = require('./survey-sample-data');
-const Player = require('../src/player');
-const Round = require('../src/round');
-const Turn = require('../src/turn');
+// const Player = require('../src/player');
+import Player from '../src/player';
+// const Round = require('../src/round');
+import Round from '../src/round';
+// const Turn = require('../src/turn');
+import Turn from '../src/turn';
 
 
 let 

@@ -5,11 +5,9 @@ class Player {
   }
 
   updateScore(points) {
-    // this.score += points;
+    this.score += points;
   }
 }
 
 
-if (typeof module !== 'undefined') {
-  module.exports = Player;
-}
+export default Player;
