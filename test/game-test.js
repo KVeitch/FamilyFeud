@@ -12,7 +12,7 @@ import data from './sample-data-3surveys';
 import Game from '../src/game';
 import Player from '../src/player'
 import Round from '../src/round';
-import FastMoney from '../src/fastMoney'
+import FastMoney from '../src/fastMoneyRound'
 import Turn from '../src/turn';
 chai.use(spies);
 chai.spy.on(domUpdates, ['appendNames', 'appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays'], () => {});

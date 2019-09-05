@@ -1,6 +1,6 @@
 import Round from './Round';
 import Player from '../src/player'
-import FastMoney from './fastMoneyRound'
+import FastMoneyRound from './fastMoneyRound'
 import domUpdates from './domUpdates';
 // const FastMoney = require('../src/fastMoney');
 // const Player = require('../src/player');
@@ -17,24 +17,25 @@ class Game {
   }
 
   getSurveys() {
-    while (this.surveys.length < 3) {
+    while (this.surveys.length < 4) {
       let id = Math.ceil(Math.random() * this.data.surveys.length);
       if(this.surveys.indexOf(id) === -1) this.surveys.push(id);
     }
-
+    
     this.surveys = this.surveys.map(idNum => {
       let question = this.data.surveys.find(survey => survey.id === idNum);
       let answers =  this.data.answers.filter(answer => (answer.surveyId === idNum));
       return ({question: question.question, answers: answers});
     });
-  
+    
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
-  }
-
-  startRound() {
+      console.log(this.surveys);
+    }
+    
+    startRound() {
     if(this.roundCount === 3) {
-      this.round = new FastMoney(this.surveys[2]);
+      this.round = new FastMoneyRound(this.surveys[2]);
     } else {
       this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
     }

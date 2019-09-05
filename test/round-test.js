@@ -47,7 +47,7 @@ describe('ROUND CLASS', function() {
   });
 
   describe('getRoundWinner', () => {
-    it.only('Should declare a winner when all correct answers are guessed', () => {
+    it('Should declare a winner when all correct answers are guessed', () => {
       
     });
   });
