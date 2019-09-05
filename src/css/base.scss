@@ -4,10 +4,18 @@ $dark-green: #244c3c;
 $middle-green: #526c5b;
 $light-green: #dcdcbb;
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+	padding: 0;
+	transistion: 1s;
+}
 
 body {
+	background-image: url('../images/background-img.png');
 	font-family: $main-typeface;
-	background-image: url('../images/background-img.png');  //not working at the moment
 }
 
 .display-typeface {
@@ -33,34 +41,47 @@ header {
 
   .header__container {
     display: flex;
-	justify-content: space-around;
-  }
+		justify-content: space-around;
+	}
+	
+	.player2__name,
+	.player1__name {
+		font-size: 2em;
+	}
+
+}
+.game__question {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	font-family: $display-typeface;
+	color: $dark-green;
+	font-size: 2em;
+	background-color:$light-green;
+	border: 10px double #244c3c;
+	height: 4.1em;	
+	padding:8px;
+	
+	#question-text {
+		text-align: left;
+		font-family: $main-typeface;
+		color: $dark-green;
+		background-color:$light-green;
+		width: 90%;
+		margin-left: 25px;
+	}
 
 }
 
 main {
 	display: flex;
-	width: 100%;
 	justify-content: space-between;
+	padding:20px;
+	width: 100%;
 
 	.game {
 		width: 60%;
-	}
-
-	.game__question {
-		font-family: $display-typeface;
-		color: $dark-green;
-		background-color:$light-green;
-		border: 10px double #244c3c;
-		height: 20%;	
-		margin-top: 0;	
-	}
-
-	#question-text {
-		font-family: $main-typeface;
-		color: $dark-green;
-		background-color:$light-green;
-		width: 90%;
 	}
 
 	.qStyle {
@@ -135,7 +156,7 @@ main {
 		.inputs__player2 {
 			margin-top: 5%;
 			width: 100%;
-			height: 50px;
+			height: 75px;
 		}
 
 		.hidden {
@@ -154,16 +175,19 @@ main {
 		.player1__guess,
 		.player2__guess{
 			width: 63%;
-			height: 35%;
+			height: 35px;
+			font-size: 1em;
+			padding: 0 10px;
 		}
 
 		.inputs__reset {
-			margin: 30% 30% 15% 65%;
-			height: 25px;
-			width: 100px;
+			margin-left: auto;
+			height: 50px;
+			width: 175px;
     	background-color: #526c5b;
 			border: 4px inset #244c3c;
-			color: #dcdcbb; 
+			color: #dcdcbb;
+			font-size: 1em; 
 
 		}
 	}
