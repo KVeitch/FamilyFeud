@@ -61,11 +61,11 @@ const domUpdates = {
     $('.round-feedback').toggle('none')
   },
   
-  removeFeedback() {
+  removeFeedback(game) {
     setTimeout(()=> {
       $('.round-feedback').toggle('none');
       $('.round-feedback').html('');
-    },3000)
+    }, 3000)
   },
 
   postScore(game, playerNumber) {
