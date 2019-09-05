@@ -1,6 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 const data = require('./survey-sample-data');
+import Game from '../src/game'
 // const Player = require('../src/player');
 import Player from '../src/player';
 // const Round = require('../src/round');
@@ -13,18 +14,23 @@ let
 player1, 
 player2, 
 round,
-turn;
+turn,
+game;
 
 describe('ROUND CLASS', function() {
   beforeEach(() => { 
+    game = new Game(data)
     player1 = new Player('Kirk');
     player2 = new Player('Ayla');
-    round = new Round( );
-    turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
+    round = new Round();
+    // turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });
 
-  it('Should have a single survey', function() {
-  	expect(round.survey).to.be.typeof('array')
+  it.only('Should have a single survey', () => {
+    game.getSurveys();
+    game.startRound();
+    console.log(round.survey)
+  	expect(round.survey).to.have.a.lengthOf(1);
   });
 
   it('Should create its own turns', function() {

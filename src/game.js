@@ -24,7 +24,7 @@ class Game {
     this.surveys = this.surveys.map(idNum => {
       let question = this.data.surveys.find(survey => survey.id === idNum);
       let answers =  this.data.answers.filter(answer => (answer.surveyId === idNum));
-      return ({'question': question.question, answers: answers});
+      return ({question: question.question, answers: answers});
     });
   
     this.surveys.forEach(survey => survey.answers

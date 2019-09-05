@@ -1,6 +1,8 @@
+
 import chai from 'chai';
 import domUpdates from '../src/domUpdates';
 const expect = chai.expect;
+const spies = require('chai-spies');
 // const data = require('./survey-sample-data');
 import data from './sample-data-3surveys';
 // const Game = require('../src/game');
@@ -12,9 +14,8 @@ import Player from '../src/player'
 import Round from '../src/round';
 import FastMoney from '../src/fastMoney'
 import Turn from '../src/turn';
-const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(domUpdates, ['appendNames', 'appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays' ]);
+chai.spy.on(domUpdates, ['appendNames', 'appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays'], () => {});
 
 let 
 game,
@@ -50,7 +51,7 @@ describe('GAME CLASS', function() {
     expect(game.roundCount).to.equal(2);
   });
   
-  it.only('Should be able to instantiate a new round', () => {
+  it.skip('Should be able to instantiate a new round', () => {
     game.makePlayers('Kirk', 'Ayla')
     game.getSurveys();
     game.startRound();
@@ -70,9 +71,11 @@ describe('GAME CLASS', function() {
     expect(game.player2.score).to.equal(0);
   });
 
-  it('should fire one time', () => {
-
-    domUpdates.appendNames(game);
-    expect(domUpdates.appendNames(game)).to.be.called(1);
-  })
-})
+  describe('appendName', () => {
+    it('should fire one time', () => {
+  
+      domUpdates.appendNames(game);
+      expect(domUpdates.appendNames).to.have.been.called(1);
+    });
+  });
+});
