@@ -93,6 +93,8 @@ function checkNewRoundStart() {
     domUpdates.hideAnswers();
     game.continueGame();
     repopulateDOM()
+  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+    game.startFastRound()
   }
 }
 

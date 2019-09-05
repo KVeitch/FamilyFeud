@@ -1,6 +1,6 @@
 import Round from './Round';
 import Player from '../src/player'
-import FastMoney from '../src/fastMoney'
+import FastMoney from './fastMoneyRound'
 import domUpdates from './domUpdates';
 // const FastMoney = require('../src/fastMoney');
 // const Player = require('../src/player');
@@ -49,6 +49,10 @@ class Game {
   makePlayers(player1Name, player2Name) {
     this.player1 = new Player(player1Name)
     this.player2 = new Player(player2Name)
+  }
+
+  startFastRound(){
+    console.log('hi')
   }
 
 }
