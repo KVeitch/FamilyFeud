@@ -29,8 +29,8 @@ describe('ROUND CLASS', function() {
   it.only('Should have a single survey', () => {
     game.getSurveys();
     game.startRound();
-    console.log(round.survey)
-  	expect(round.survey).to.have.a.lengthOf(1);
+    console.log(game.round.survey)
+  	expect(game.round.survey).to.have.a.lengthOf(1);
   });
 
   it('Should create its own turns', function() {
