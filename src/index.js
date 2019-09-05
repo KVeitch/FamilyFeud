@@ -30,11 +30,13 @@ function playerSubmitButtonHelper() {
     game.round.turn.increaseScore(answer, currentPlayer);
     domUpdates.postScore(game, game.round.currentPlayer);
     domUpdates.clearGuessInput();
-    domUpdates.removeFeedback();
     checkToRevealAnswer(answer);
     game.round.togglePlayer();
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
+    domUpdates.removeFeedback(game);
+    console.log('rndct: ',game.roundCount, 'ansrRev: ',game.round.answersRevealed)
+    potato();
   }
 }
 
@@ -53,5 +55,14 @@ function playerButtonHelper() {
 function checkToRevealAnswer(answer) {
   if (answer.isCorrect) {
     domUpdates.revealAnswers(answer.index)
+  }
+}
+
+function potato() {
+  if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
+    domUpdates.hideAnswers();
+    game.continueGame();
+    
+  // && this.hideAnswers();
   }
 }
