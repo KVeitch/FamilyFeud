@@ -89,7 +89,11 @@ const domUpdates = {
       </div>`
     )
     $('.round-feedback').toggle('none')
-  }
+  },
+
+  removeDarkenFilter() {
+    $('.jq-filter').removeClass('darken')
+  },
 }
 
 export default domUpdates 

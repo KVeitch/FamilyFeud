@@ -137,46 +137,6 @@ main {
 		background-color:$light-green;
 	}
 
-	.main__player {
-		background-color: #dcdcbb;
-		border: 10px double #244c3c;
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		z-index: 20;
-		width: 50%; 
-		min-height: 250px;
-		min-width: 490px; 
-		top: 30%;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 10px;
-
-		.player__prompt {
-			font-family: $display-typeface;
-    	color: #244c3c;
-   		font-size: 1.8em;
-   		letter-spacing: 1.4px;
-   		margin: 0 10% 5% 10%;
-		}
-
-		.player__input1,
-		.player__input2 {
-			align-self: center;
-			width: 100%;
-			height: 50px;
-			margin: 5px 20px;
-			color: #244c3c;
-			font-size: 1em;
-			padding: 0 10px;
-
-		}
-
-		.player__button {
-			width: 250px;
-		}
-	}
-
 	.inputs {
 		background-color: $light-green;
 		border: 10px double #244c3c;
@@ -185,7 +145,6 @@ main {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	
 
 		.inputs__player1,
 		.inputs__player2 {
@@ -250,3 +209,48 @@ main {
 	}	
 }
 
+
+.main__player {
+	background-color: #dcdcbb;
+	border: 10px double #244c3c;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	z-index: 20;
+	width: 50%; 
+	min-height: 250px;
+	min-width: 490px; 
+	top: 30%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px;
+
+	.player__prompt {
+		font-family: $display-typeface;
+		color: #244c3c;
+		 font-size: 1.8em;
+		 letter-spacing: 1.4px;
+		 margin: 0 10% 5% 10%;
+	}
+
+}
+
+.player__input1,
+.player__input2 {
+	align-self: center;
+	width: 100%;
+	height: 50px;
+	margin: 5px 20px;
+	color: #244c3c;
+	font-size: 1em;
+	padding: 0 10px;
+
+}
+
+.player__button {
+	width: 250px;
+}
+
+.darken {
+	filter: brightness(10%);
+}
