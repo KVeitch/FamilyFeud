@@ -1,6 +1,7 @@
 import Round from './Round';
 import Player from '../src/player'
 import FastMoney from '../src/fastMoney'
+import domUpdates from './domUpdates';
 // const FastMoney = require('../src/fastMoney');
 // const Player = require('../src/player');
 
@@ -33,12 +34,16 @@ class Game {
 
   startRound() {
     this.roundCount++;
-    
     if(this.roundCount === 3) {
       this.round = new FastMoney(this.surveys[2]);
     } else {
       this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
     }
+  }
+
+  continueGame() {
+    domUpdates.hideAnswers();
+    this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
   }
 
   makePlayers(player1Name, player2Name) {
