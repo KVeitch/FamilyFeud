@@ -42,6 +42,7 @@ function playerSubmitButtonHelper() {
 
 function playerButtonHelper() {
   if( $('.player__input1').val() &&  $('.player__input2').val()) {
+    domUpdates.removeDarkenFilter();
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
     domUpdates.appendNames(game);

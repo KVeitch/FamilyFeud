@@ -4,10 +4,20 @@ $dark-green: #244c3c;
 $middle-green: #526c5b;
 $light-green: #dcdcbb;
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+	padding: 0;
+	// transition: 1s;
+	// border:1px solid red;
+}
 
 body {
+	background-image: url('../images/background-img.png');
 	font-family: $main-typeface;
-	background-image: url('../images/background-img.png');  //not working at the moment
+	text-align: center;
 }
 
 .display-typeface {
@@ -33,34 +43,78 @@ header {
 
   .header__container {
     display: flex;
-	justify-content: space-around;
-  }
+		justify-content: space-between;
+		padding: 10px 30px;
+	}
+
+	.container__title {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.header__h1 {
+		font-size: 3em;
+	}
+	.container__player1,
+	.container__player2 {
+		margin-top: 20px;
+	}
+
+	.player2__name,
+	.player1__name {
+		font-size: 2em;
+		width: 100%;
+
+	}
 
 }
-
-main {
+.game__question {
 	display: flex;
-	width: 100%;
 	justify-content: space-between;
-
-	.game {
-		width: 60%;
-	}
-
-	.game__question {
-		font-family: $display-typeface;
-		color: $dark-green;
-		background-color:$light-green;
-		border: 10px double #244c3c;
-		height: 20%;	
-		margin-top: 0;	
-	}
-
+	align-items: center;
+	text-align: center;
+	font-family: $display-typeface;
+	color: $dark-green;
+	font-size: 2.2em;
+	background-color:$light-green;
+	border: 10px double #244c3c;
+	height: 4.1em;	
+	padding:8px;
+	
 	#question-text {
+		text-align: left;
 		font-family: $main-typeface;
 		color: $dark-green;
 		background-color:$light-green;
 		width: 90%;
+		margin-left: 25px;
+	}
+
+}
+button {
+	height: 50px;
+	background-color: #526c5b;
+	border: 4px inset #244c3c;
+	color: #dcdcbb;
+	font-size: 1.3em;
+	font-family: $display-typeface;
+	margin: 10px auto;
+	text-shadow:
+ -1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	 1px 1px 0 #000;
+	//  -webkit-text-fill-color: white; 
+}
+main {
+	display: flex;
+	justify-content: space-between;
+	padding:20px;
+	width: 100%;
+
+	.game {
+		width: 67%;
 	}
 
 	.qStyle {
@@ -68,74 +122,33 @@ main {
 		justify-content: space-between;
 		font-family: $display-typeface;
 		color: $light-green;
-		margin: 3% 0 0 0;
-		padding: 2%;
+		margin-bottom: 10px;
+		padding: 5px 20px;
 		font-size: 3.5em;
-		background-color: rgba(36,76,60,0.7);
+		background-color: $dark-green;
+		border:10px double $light-green;
 	}
 
+
 	.main__game {
-		padding: 2%;
+		padding: 8px;
 		height: 100%;
 		width: 60%;
 		background-color:$light-green;
-
-	}
-
-	.main__player {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		z-index: 20;
-		background-color: #dcdcbb;
-		width: 50%; 
-		height: 30%;
-		min-height: 250px;
-		min-width: 490px; 
-		top: 40%;
-		left: 25%;
-		border: 10px double #244c3c;
-
-		.player__prompt {
-		font-family: "Jacques Francois Shadow", cursive;
-    	color: #244c3c;
-   		font-size: 1.8em;
-   		letter-spacing: 1.4px;
-   		margin: 0 10% 5% 10%;
-		}
-
-		.player__input1, .player__input2 {
-			width: 80%;
-			height: 30px;
-			margin: 0 10% 5% 10%;
-			color: #244c3c;
-		}
-
-		.player__button {
-			background-color: #526c5b;
-			border: 4px inset #244c3c;
-			color: #dcdcbb;
-			height: 40px;
-			width: 80%;
-			margin: 0 12% 1% 11%;
-			padding: 0;
-		}
 	}
 
 	.inputs {
-		padding: 2%;
-		display: flex;
-		height: 100%;
-		width: 30%;
-		flex-direction: column;
 		background-color: $light-green;
 		border: 10px double #244c3c;
+		padding: 8px;
+		width: 30%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
 		.inputs__player1,
 		.inputs__player2 {
-			margin-top: 5%;
 			width: 100%;
-			height: 50px;
 		}
 
 		.hidden {
@@ -143,28 +156,22 @@ main {
 		}
 
 		.player1__button, 
-		.player2__button {
-			height: 25px;
-			width: 100px;
-			background-color: #526c5b;
-			border: 4px inset #244c3c;
-			color: #dcdcbb;
+		.player2__button,
+		.inputs__reset {
+			width: 150px;
 		}
 
 		.player1__guess,
-		.player2__guess{
-			width: 63%;
-			height: 35%;
+		.player2__guess {
+			width: 100%;
+			height: 50px;
+			font-size: 1em;
+			margin: 10px 0px;
+			padding: 0 10px;
 		}
 
 		.inputs__reset {
-			margin: 30% 30% 15% 65%;
-			height: 25px;
-			width: 100px;
-    	background-color: #526c5b;
-			border: 4px inset #244c3c;
-			color: #dcdcbb; 
-
+			align-self: center;
 		}
 	}
 
@@ -202,3 +209,56 @@ main {
 	}	
 }
 
+
+.main__player {
+	background-color: #dcdcbb;
+	border: 10px double #244c3c;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	z-index: 20;
+	width: 50%; 
+	min-height: 250px;
+	min-width: 490px; 
+	top: 30%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px;
+
+	.player__prompt {
+		font-family: $display-typeface;
+		color: #244c3c;
+		 font-size: 1.8em;
+		 letter-spacing: 1.4px;
+		 margin: 0 10% 5% 10%;
+	}
+
+}
+
+.player__input1,
+.player__input2 {
+	align-self: center;
+	width: 100%;
+	height: 50px;
+	margin: 5px 20px;
+	color: #244c3c;
+	font-size: 1em;
+	padding: 0 10px;
+
+}
+
+.player__button {
+	width: 250px;
+}
+
+.darken {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:10;
+	height: 100%;
+	width: 100%;
+	filter: brightness(50%);
+	background-color: #00000000;
+	background-image: url('../images/background-img.png')
+}
