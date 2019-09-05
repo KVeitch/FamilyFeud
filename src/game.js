@@ -41,9 +41,9 @@ class Game {
   }
 
   continueGame() {
-    console.log('hi')
-    // domUpdates.hideAnswers();
     this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
+    this.round.makeNewTurn();
+
   }
 
   makePlayers(player1Name, player2Name) {

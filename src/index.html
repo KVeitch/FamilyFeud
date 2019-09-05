@@ -8,26 +8,23 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="header__h1 display-typeface">$FastMoney$ Feud</h1>
       <div class="header__container">
         <div class="container__player1">
-          <h3 class="player1__name jq-name1 main-typeface"> Player Name 1</h3>
+          <h3 class="player1__name jq-name1 main-typeface"> Your Name Here</h3>
           <h3 class="player1__score display-typeface">$0</h3>
         </div>
-        <div class="container__round display-typeface">Round <span id="round-number">1</span></div>
+        <div class="container__title">
+          <h1 class="header__h1 display-typeface">$FastMoney$ Feud</h1>
+          <div class="container__round display-typeface">Round <span id="round-number">1</span></div>
+        </div>
         <div class="container__player2">
-          <h3 class="player2__name jq-name2 main-typeface"> Player Name 2</h3>
+          <h3 class="player2__name jq-name2 main-typeface"> or Your Name Here</h3>
           <h3 class="player2__score display-typeface">$0</h3>
         </div>
-    </div>
+      </div>
     </header>
+    <div class="game__question">Question: <span id="question-text">$$$$$ $$$$$$ $$$$$$$ $$$$$$$ $$$$$$$$ $$$$$$$ $$$$$$$</span></div>
     <main class="main">
-      <section class="main__player">
-        <h2 class="player__prompt"> $ Enter players names! $ </h2>
-        <input type="text" class="player__input1" maxlength="25"placeholder="Player 1 here Bitch!"></input>
-        <input type="text" class="player__input2" maxlength="25" placeholder="Player 2 here Bitch!"></input>
-        <button class="player__button"> YAS QUEEN </button>
-      </section>
       <section class="main__round" hidden>
         <h3 class="round__message" >Congratulations <span id="round-winner"></span> u won dis round!</h3>
       </section>
@@ -35,19 +32,18 @@
         <h3 class="game__message">Congratulations <span id="game-winner"></span> u won dis game!</h3>
       </section>
       <section class="game">
-        <h3 class="game__question">Question: <span id="question-text">put some shitin here for testing purposes</span></h3>
         <div class="game__answer1 qStyle">
-          <span id='jq-dollar0'> $$$$$$$$$$ </span>
+          <span id='jq-dollar0'> $$$$$$$$$$$$$$$$$$$$$  $$$ </span>
           <span id='jq-answer0' hidden></span>
           <span id='jq-value0' hidden></span>
         </div>
         <div class="game__answer2 qStyle">
-          <span id='jq-dollar1'> $$$$$$$$$$ </span>
+          <span id='jq-dollar1'> $$$$$$$$$$$$$$$$$$$$$  $$$ </span>
           <span id='jq-answer1' hidden></span>
           <span id='jq-value1' hidden></span>
         </div>
         <div class="game__answer3 qStyle">
-          <span id='jq-dollar2'> $$$$$$$$$$ </span>
+          <span id='jq-dollar2'> $$$$$$$$$$$$$$$$$$$$$  $$$ </span>
           <span id='jq-answer2' hidden></span>
           <span id='jq-value2' hidden></span>
         </div>
@@ -56,19 +52,27 @@
         <div class="inputs__player1">
           <h4 class="player1__name jq-name1 main-typeface">Player1 Name</h4>
           <input type="text" class="player1__guess jq-guess" placeholder="Guess here muthafuckas!"></input>
-          <button class="player1__button jq-submit">Submit</button>
+          <button class="player1__button jq-submit">S U B M I T</button>
         </div>
         <div class="inputs__player2 hidden">
           <h4 class="player2__name jq-name2 main-typeface">Player2 Name</h4>
           <input type="text" class="player2__guess jq-guess" placeholder="Guess here muthafuckas!"></input>
-          <button class="player2__button jq-submit">Submit</button>
+          <button class="player2__button jq-submit">S U B M I T</button>
         </div>
-        <button class="inputs__reset">Reset</button>
+        <button class="inputs__reset">R E S E T</button>
       </section>
       <section class="round-feedback">
       </section>
     </main>
+  <div class="darken jq-filter">
+  </div>
+  <section class="main__player">
+    <h2 class="player__prompt"> $ Enter players names! $ </h2>
+    <input type="text" class="player__input1" maxlength="25"placeholder="Player 1 here Bitch!"></input>
+    <input type="text" class="player__input2" maxlength="25" placeholder="Player 2 here Bitch!"></input>
+    <button class="player__button"> YAS QUEEN </button>
+    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   </body>
-</html>
+  </html>

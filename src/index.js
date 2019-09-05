@@ -3,21 +3,51 @@ import $ from 'jquery';
 import domUpdates from './domUpdates';
 import './css/base.scss';
 import './images/turing-logo.png'
-import data from '../test/sample-data-3surveys';
 import Game from './game';
+
+
+/////////////////////////////////////////////////////////////////////////
+////////////comment out the following for live data fetch////////////////
+/////////////////////////////////////////////////////////////////////////
+
+import data from '../test/sample-data-3surveys';
 let game = new Game(data);
-game.getSurveys();
+game.getSurveys()
+
+/////////////////////////////////////////////////////////////////////////
+//////////////comment out the above for live data fetch//////////////////
+/////////////////////////////////////////////////////////////////////////
 
 
 
-$('.inputs__reset').click(function() {
-  location.reload()
-})
+/////////////////////////////////////////////////////////////////////////
+//////////Uncomment out the following for live data fetch////////////////
+/////////////////////////////////////////////////////////////////////////
+
+// let game
+// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+//   .then(fetchData => fetchData.json())
+//   .then(fdata => createGame(fdata.data) )
+//   .catch(error => console.log(error))
+
+
+
+// function createGame(data) {
+//   game = new Game(data);
+//   console.log('cg: ',game)
+//   game.getSurveys();
+// }
+
+/////////////////////////////////////////////////////////////////////////
+////////////Uncomment out the above for live data fetch//////////////////
+/////////////////////////////////////////////////////////////////////////
+
+$('.inputs__reset').click(() => location.reload());
 
 $('.player__button').click(playerButtonHelper);
 
 $('.jq-submit').click(playerSubmitButtonHelper);
-
+$('document').ready(() => $('.player__input1').focus())
 // $('.player2__button').click(player2ButtonHelper);
 
 
@@ -35,13 +65,13 @@ function playerSubmitButtonHelper() {
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
     domUpdates.removeFeedback(game);
-    console.log('rndct: ',game.roundCount, 'ansrRev: ',game.round.answersRevealed)
-    potato();
+    checkNewRoundStart();
   }
 }
 
 function playerButtonHelper() {
   if( $('.player__input1').val() &&  $('.player__input2').val()) {
+    domUpdates.removeDarkenFilter();
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
     domUpdates.appendNames(game);
@@ -58,11 +88,18 @@ function checkToRevealAnswer(answer) {
   }
 }
 
-function potato() {
+function checkNewRoundStart() {
   if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
     domUpdates.hideAnswers();
     game.continueGame();
-    
-  // && this.hideAnswers();
+    repopulateDOM()
   }
+}
+
+function repopulateDOM() {
+  setTimeout(()=>{
+    domUpdates.appendSurvey(game);
+    domUpdates.appendAnswers(game);
+    domUpdates.updateRoundNumber(game);
+  },3000)
 }
