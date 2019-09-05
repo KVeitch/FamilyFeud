@@ -24,17 +24,19 @@ $('.jq-submit').click(playerSubmitButtonHelper);
 function playerSubmitButtonHelper() {
   if($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
-    let answer = game.round.turn.hasAnswer();
+    let answer = game.round.turn.hasAnswer(game.round);
     
-    game.round.turn.giveFeedback(answer);
+    game.round.turn.giveFeedback(answer, game);
     game.round.turn.increaseScore(answer, currentPlayer);
     domUpdates.postScore(game, game.round.currentPlayer);
     domUpdates.clearGuessInput();
-    domUpdates.removeFeedback();
     checkToRevealAnswer(answer);
     game.round.togglePlayer();
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
+    domUpdates.removeFeedback(game);
+    console.log('rndct: ',game.roundCount, 'ansrRev: ',game.round.answersRevealed)
+    potato();
   }
 }
 
@@ -53,5 +55,14 @@ function playerButtonHelper() {
 function checkToRevealAnswer(answer) {
   if (answer.isCorrect) {
     domUpdates.revealAnswers(answer.index)
+  }
+}
+
+function potato() {
+  if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
+    domUpdates.hideAnswers();
+    game.continueGame();
+    
+  // && this.hideAnswers();
   }
 }
