@@ -10,12 +10,14 @@ $light-green: #dcdcbb;
   box-sizing: border-box;
   margin: 0;
 	padding: 0;
-	transistion: 1s;
+	// transition: 1s;
+	// border:1px solid red;
 }
 
 body {
 	background-image: url('../images/background-img.png');
 	font-family: $main-typeface;
+	text-align: center;
 }
 
 .display-typeface {
@@ -41,12 +43,29 @@ header {
 
   .header__container {
     display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
+		padding: 10px;
 	}
-	
+
+	.container__title {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.header__h1 {
+		font-size: 3em;
+	}
+	.container__player1,
+	.container__player2 {
+		margin-top: 20px;
+	}
+
 	.player2__name,
 	.player1__name {
 		font-size: 2em;
+		width: 100%;
+
 	}
 
 }
@@ -57,7 +76,7 @@ header {
 	text-align: center;
 	font-family: $display-typeface;
 	color: $dark-green;
-	font-size: 2em;
+	font-size: 2.2em;
 	background-color:$light-green;
 	border: 10px double #244c3c;
 	height: 4.1em;	
@@ -81,7 +100,7 @@ main {
 	width: 100%;
 
 	.game {
-		width: 60%;
+		width: 67%;
 	}
 
 	.qStyle {
@@ -89,18 +108,20 @@ main {
 		justify-content: space-between;
 		font-family: $display-typeface;
 		color: $light-green;
-		margin: 3% 0 0 0;
-		padding: 2%;
+		margin-bottom: 10px;
+		padding: 5px 20px;
 		font-size: 3.5em;
-		background-color: rgba(36,76,60,0.7);
+		background-color: $dark-green;
+		border:10px double $light-green;
+		// transition: 2s;
 	}
 
+
 	.main__game {
-		padding: 2%;
+		padding: 8px;
 		height: 100%;
 		width: 60%;
 		background-color:$light-green;
-
 	}
 
 	.main__player {
@@ -118,14 +139,16 @@ main {
 		border: 10px double #244c3c;
 
 		.player__prompt {
-		font-family: "Jacques Francois Shadow", cursive;
+			font-family: $display-typeface;
     	color: #244c3c;
    		font-size: 1.8em;
    		letter-spacing: 1.4px;
    		margin: 0 10% 5% 10%;
 		}
 
-		.player__input1, .player__input2 {
+		.player__input1,
+		.player__input2 {
+			align-self: center;
 			width: 80%;
 			height: 30px;
 			margin: 0 10% 5% 10%;
@@ -133,30 +156,37 @@ main {
 		}
 
 		.player__button {
+			height: 50px;
+			width: 250px;
 			background-color: #526c5b;
 			border: 4px inset #244c3c;
 			color: #dcdcbb;
-			height: 40px;
-			width: 80%;
-			margin: 0 12% 1% 11%;
-			padding: 0;
+			font-size: 1em;
+			font-family: $display-typeface;
+			margin: 10px auto;
+			text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+
 		}
 	}
 
 	.inputs {
-		padding: 2%;
-		display: flex;
-		height: 100%;
-		width: 30%;
-		flex-direction: column;
 		background-color: $light-green;
 		border: 10px double #244c3c;
+		padding: 8px;
+		width: 30%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	
 
 		.inputs__player1,
 		.inputs__player2 {
-			margin-top: 5%;
 			width: 100%;
-			height: 75px;
 		}
 
 		.hidden {
@@ -164,31 +194,27 @@ main {
 		}
 
 		.player1__button, 
-		.player2__button {
-			height: 25px;
-			width: 100px;
+		.player2__button,
+		.inputs__reset {
+			height: 50px;
+			width: 150px;
 			background-color: #526c5b;
 			border: 4px inset #244c3c;
 			color: #dcdcbb;
+			font-size: 1em;
 		}
 
 		.player1__guess,
-		.player2__guess{
-			width: 63%;
-			height: 35px;
+		.player2__guess {
+			width: 100%;
+			height: 50px;
 			font-size: 1em;
+			margin: 10px 0px;
 			padding: 0 10px;
 		}
 
 		.inputs__reset {
-			margin-left: auto;
-			height: 50px;
-			width: 175px;
-    	background-color: #526c5b;
-			border: 4px inset #244c3c;
-			color: #dcdcbb;
-			font-size: 1em; 
-
+			align-self: center;
 		}
 	}
 
