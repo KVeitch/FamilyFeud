@@ -3,21 +3,51 @@ import $ from 'jquery';
 import domUpdates from './domUpdates';
 import './css/base.scss';
 import './images/turing-logo.png'
-import data from '../test/sample-data-3surveys';
 import Game from './game';
+
+
+/////////////////////////////////////////////////////////////////////////
+////////////comment out the following for live data fetch////////////////
+/////////////////////////////////////////////////////////////////////////
+
+import data from '../test/sample-data-3surveys';
 let game = new Game(data);
-game.getSurveys();
+game.getSurveys()
+
+/////////////////////////////////////////////////////////////////////////
+//////////////comment out the above for live data fetch//////////////////
+/////////////////////////////////////////////////////////////////////////
 
 
 
-$('.inputs__reset').click(function() {
-  location.reload()
-})
+/////////////////////////////////////////////////////////////////////////
+//////////Uncomment out the following for live data fetch////////////////
+/////////////////////////////////////////////////////////////////////////
+
+// let game
+// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+//   .then(fetchData => fetchData.json())
+//   .then(fdata => createGame(fdata.data) )
+//   .catch(error => console.log(error))
+
+
+
+// function createGame(data) {
+//   game = new Game(data);
+//   console.log('cg: ',game)
+//   game.getSurveys();
+// }
+
+/////////////////////////////////////////////////////////////////////////
+////////////Uncomment out the above for live data fetch//////////////////
+/////////////////////////////////////////////////////////////////////////
+
+$('.inputs__reset').click(() => location.reload());
 
 $('.player__button').click(playerButtonHelper);
 
 $('.jq-submit').click(playerSubmitButtonHelper);
-
+$('document').ready(() => $('.player__input1').focus())
 // $('.player2__button').click(player2ButtonHelper);
 
 
