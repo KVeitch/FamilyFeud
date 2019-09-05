@@ -24,21 +24,23 @@ const domUpdates = {
   },
 
   revealAnswers(index) {
-    $(`#jq-answer${index}`).toggle('hidden');
-    $(`#jq-dollar${index}`).toggle('hidden');
-    $(`#jq-value${index}`).toggle('hidden');
+    $(`#jq-answer${index}`).toggle();
+    $(`#jq-dollar${index}`).toggle();
+    $(`#jq-value${index}`).toggle();
   },
 
   hideAnswers() {
-    $('#jq-answer0').toggle('hidden');
-    $('#jq-dollar0').toggle('hidden');
-    $('#jq-value0').toggle('hidden');
-    $('#jq-answer1').toggle('hidden');
-    $('#jq-dollar1').toggle('hidden');
-    $('#jq-value1').toggle('hidden');
-    $('#jq-answer2').toggle('hidden');
-    $('#jq-dollar2').toggle('hidden');
-    $('#jq-value2').toggle('hidden');
+    setTimeout(()=> {
+      $('#jq-answer0').toggle();
+      $('#jq-dollar0').toggle();
+      $('#jq-value0').toggle();
+      $('#jq-answer1').toggle();
+      $('#jq-dollar1').toggle();
+      $('#jq-value1').toggle();
+      $('#jq-answer2').toggle();
+      $('#jq-dollar2').toggle();
+      $('#jq-value2').toggle();
+    },3000)
   },
 
   badFeedback() {
@@ -93,6 +95,10 @@ const domUpdates = {
 
   removeDarkenFilter() {
     $('.jq-filter').removeClass('darken')
+  },
+
+  updateRoundNumber(game) {
+    $('#round-number').text(game.roundCount)
   },
 }
 

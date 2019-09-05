@@ -65,8 +65,7 @@ function playerSubmitButtonHelper() {
     game.round.makeNewTurn();
     domUpdates.togglePlayerDisplays();
     domUpdates.removeFeedback(game);
-    console.log('rndct: ',game.roundCount, 'ansrRev: ',game.round.answersRevealed)
-    potato();
+    checkNewRoundStart();
   }
 }
 
@@ -89,11 +88,18 @@ function checkToRevealAnswer(answer) {
   }
 }
 
-function potato() {
+function checkNewRoundStart() {
   if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
     domUpdates.hideAnswers();
     game.continueGame();
-    
-  // && this.hideAnswers();
+    repopulateDOM()
   }
+}
+
+function repopulateDOM() {
+  setTimeout(()=>{
+    domUpdates.appendSurvey(game);
+    domUpdates.appendAnswers(game);
+    domUpdates.updateRoundNumber(game);
+  },3000)
 }
