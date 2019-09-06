@@ -21,7 +21,6 @@ class FastMoneyRound extends Round {
   }
 
   playerTimeOut() {
-    console.log('times run out lil bitch');
     $('.container__round--timer').text('')
   }
 

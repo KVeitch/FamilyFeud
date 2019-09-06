@@ -62,7 +62,6 @@ function playerSubmitButtonHelper() {
       domUpdates.postScore(game, game.round.currentPlayer);
       domUpdates.clearGuessInput(); 
 
-
       domUpdates.removeFeedback(game);
     } 
   } else {
@@ -109,7 +108,7 @@ function checkNewRoundStart() {
     game.startRound();
     game.round.makeNewTurn();
     repopulateDOM()
-  } else if (game.roundCount >=3 && game.round.answersRevealed === 3) {
+  } else if (game.roundCount >= 3 && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
     // domUpdates.fastMoneyRoundWarning()

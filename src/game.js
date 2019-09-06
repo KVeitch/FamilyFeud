@@ -42,12 +42,11 @@ class Game {
     this.round.makeNewTurn();
   }
 
-  continueGame() {
-    this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
-    console.log('after: ', this.round.currentPlayer)
-    this.round.makeNewTurn();
-
-  }
+  // continueGame() {
+  //   this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
+  //   console.log('after: ', this.round.currentPlayer)
+  //   this.round.makeNewTurn();
+  // }
 
   makePlayers(player1Name, player2Name) {
     this.player1 = new Player(player1Name)
