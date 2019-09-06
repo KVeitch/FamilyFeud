@@ -63,11 +63,9 @@ const domUpdates = {
     $('.round-feedback').toggle('none')
   },
   
-  removeFeedback(game) {
-    setTimeout(()=> {
+  removeFeedback() {
       $('.round-feedback').toggle('none');
       $('.round-feedback').html('');
-    }, 3000)
   },
 
   postScore(game, playerNumber) {
@@ -112,6 +110,16 @@ const domUpdates = {
 
   setFastRoundHeader() {
     $('.container__round').html('F A $ T - R O U N D')
+  },
+
+  displayFastRoundWarning(currentPlayer) {
+    $('.round-feedback').append(
+      `<div class='feedback__style'>
+          <h3>$$$ Get ready ${currentPlayer} $$$</h3>
+          <p> your fa$t round is about to start! </p>
+      </div>`
+    );
+    $('.round-feedback').toggle('none')
   },
 
 }

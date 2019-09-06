@@ -57,12 +57,9 @@ function playerSubmitButtonHelper() {
       let currentPlayer = game[`player${game.round.currentPlayer}`]
       let answer = game.round.turn.hasAnswer(game.round);
       
-      game.round.turn.giveFeedback(answer, game);
       game.round.turn.increaseScore(answer, currentPlayer);
       domUpdates.postScore(game, game.round.currentPlayer);
       domUpdates.clearGuessInput(); 
-
-      domUpdates.removeFeedback(game);
     } 
   } else {
     if($('.player1__guess').val() || $('.player2__guess').val()) {
@@ -77,7 +74,7 @@ function playerSubmitButtonHelper() {
       game.round.togglePlayer();
       game.round.makeNewTurn();
       domUpdates.togglePlayerDisplays();
-      domUpdates.removeFeedback(game);
+      setTimeout(() => {domUpdates.removeFeedback()}, 2000);
       checkNewRoundStart();
     }
   }
@@ -111,11 +108,14 @@ function checkNewRoundStart() {
   } else if (game.roundCount >= 3 && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
-    // domUpdates.fastMoneyRoundWarning()
-    game.startFastRound()
-    repopulateDOM()
-    domUpdates.setFastRoundHeader()
-    setTimeout(()=> { game.round.startTime(game)} , 3100);
+    game.startFastRound();
+    repopulateDOM();
+    domUpdates.setFastRoundHeader();
+    setTimeout(()=> {
+      let currentPlayer = game.round.currentPlayer
+      domUpdates.displayFastRoundWarning(game.player`${currentPlayer}`.name)}, 5000);
+    setTimeout(() => {domUpdates.removeFeedback()}, 7000);
+    setTimeout(()=> {game.round.startTime(game)}, 9000);
   }
 }
 
