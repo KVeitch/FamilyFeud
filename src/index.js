@@ -112,8 +112,8 @@ function checkNewRoundStart() {
     repopulateDOM();
     domUpdates.setFastRoundHeader();
     setTimeout(()=> {
-      let currentPlayer = game.round.currentPlayer
-      domUpdates.displayFastRoundWarning(game.player`${currentPlayer}`.name)}, 5000);
+      let currentPlayer = game[`player${game.round.currentPlayer}`]
+      domUpdates.displayFastRoundWarning(currentPlayer)}, 5000);
     setTimeout(() => {domUpdates.removeFeedback()}, 7000);
     setTimeout(()=> {game.round.startTime(game)}, 9000);
   }
