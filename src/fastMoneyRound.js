@@ -13,11 +13,12 @@ class FastMoneyRound extends Round {
       if (timeLeft == 0) {
         clearTimeout(timerId);
         game.round.playerTimeOut();
+        endFastRound();
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
-    } // needs to go to domUpdates
+    } 
   }
 
   playerTimeOut() {

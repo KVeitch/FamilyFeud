@@ -8,7 +8,7 @@ class Round {
     this.player2Name = player2;
     this.turn = {};
     this.currentPlayer = currentPlayer;
-    this.answersRevealed = 0
+    this.answersRevealed = 0;
     this.guessedAnswers = []
   }
 

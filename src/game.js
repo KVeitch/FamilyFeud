@@ -11,7 +11,7 @@ class Game {
     this.data = data;
     this.surveys = [];
     this.round = {};
-    this.roundCount = 1;
+    this.roundCount = 2;
     this.player1 = {};
     this.player2 = {};
   }
@@ -19,7 +19,7 @@ class Game {
   getSurveys() {
     while (this.surveys.length < 4) {
       let id = Math.ceil(Math.random() * this.data.surveys.length);
-      if(this.surveys.indexOf(id) === -1) this.surveys.push(id);
+      if (this.surveys.indexOf(id) === -1) this.surveys.push(id);
     }
     
     this.surveys = this.surveys.map(idNum => {
