@@ -13,12 +13,24 @@ class FastMoneyRound extends Round {
       if (timeLeft == 0) {
         clearTimeout(timerId);
         game.round.playerTimeOut();
-        endFastRound();
+        fastRoundTimeout();
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
     } 
+  }
+
+  fastRoundTimeout() {
+    if (game.roundCount === 3) {
+      domUpdates.hideAnswers();
+      domUpdates.setFastRoundPlayer1();
+      game.startFastRound();
+      game.round.playerTimeOut();
+      domUpdates.setFastRoundHeader();
+    } else if (game.roundCount === 4) {
+      
+    }
   }
 
   playerTimeOut() {
@@ -39,4 +51,4 @@ export default FastMoneyRound;
 // finish all testing
 // overall refactor 
 // finish CSSing
-
+// multiplier make it happen baby

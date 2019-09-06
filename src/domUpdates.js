@@ -122,6 +122,15 @@ const domUpdates = {
     $('.round-feedback').toggle('none')
   },
 
+  displayGameWinner(winner) {
+    $('.round-feedback').append(
+      `<div class='feedback__style'>
+          <h3>$$$ Congrats ${winner} $$$</h3>
+          <p> you won the game! </p>
+      </div>`
+    );
+    $('.round-feedback').toggle('none')
+  },
 }
 
 export default domUpdates 
