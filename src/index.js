@@ -52,10 +52,18 @@ $('document').ready(() => $('.player__input1').focus())
 
 
 function playerSubmitButtonHelper() {
-  if (game.roundCount === 3) {
+  if (game.roundCount >= 3) {
     if ($('.player1__guess').val() || $('.player2__guess').val()) {
       let currentPlayer = game[`player${game.round.currentPlayer}`]
-      let answer = game.round.turn.hasAnswer(game.round); 
+      let answer = game.round.turn.hasAnswer(game.round);
+      
+      game.round.turn.giveFeedback(answer, game);
+      game.round.turn.increaseScore(answer, currentPlayer);
+      domUpdates.postScore(game, game.round.currentPlayer);
+      domUpdates.clearGuessInput(); 
+
+
+      domUpdates.removeFeedback(game);
     } 
   } else {
     if($('.player1__guess').val() || $('.player2__guess').val()) {
@@ -98,10 +106,16 @@ function checkToRevealAnswer(answer) {
 function checkNewRoundStart() {
   if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
     domUpdates.hideAnswers();
-    game.continueGame();
+    game.startRound();
+    game.round.makeNewTurn();
     repopulateDOM()
   } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+    domUpdates.hideAnswers();
+    domUpdates.setFastRoundPlayer1();
+    // domUpdates.fastMoneyRoundWarning()
     game.startFastRound()
+    repopulateDOM()
+    setTimeout(()=> { game.round.startTime(game)} , 3100);
   }
 }
 

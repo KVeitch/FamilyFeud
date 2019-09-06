@@ -1,4 +1,4 @@
-import Round from './Round';
+import Round from './round';
 import Player from '../src/player'
 import FastMoneyRound from './fastMoneyRound'
 import domUpdates from './domUpdates';
@@ -31,18 +31,20 @@ class Game {
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
       console.log(this.surveys);
-    }
-    
-    startRound() {
-    if(this.roundCount === 3) {
-      this.round = new FastMoneyRound(this.surveys[2]);
-    } else {
-      this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
-    }
+  }
+
+  startRound() {
+      this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
+  }
+
+  startFastRound(){
+    this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1, this.player2)
+    this.round.makeNewTurn();
   }
 
   continueGame() {
-    this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
+    this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
+    console.log('after: ', this.round.currentPlayer)
     this.round.makeNewTurn();
 
   }
@@ -52,9 +54,6 @@ class Game {
     this.player2 = new Player(player2Name)
   }
 
-  startFastRound(){
-    console.log('hi')
-  }
 
 }
 
