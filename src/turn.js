@@ -32,7 +32,7 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
-    answer.answer === undefined ? null : player.score = player.score + multiplier * answer.answer.respondents
+    answer.answer === undefined ? null : player.updateScore( multiplier * answer.answer.respondents)
   }
 }
 

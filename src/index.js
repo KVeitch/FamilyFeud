@@ -109,12 +109,13 @@ function checkNewRoundStart() {
     game.startRound();
     game.round.makeNewTurn();
     repopulateDOM()
-  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+  } else if (game.roundCount >=3 && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
     // domUpdates.fastMoneyRoundWarning()
     game.startFastRound()
     repopulateDOM()
+    domUpdates.setFastRoundHeader()
     setTimeout(()=> { game.round.startTime(game)} , 3100);
   }
 }

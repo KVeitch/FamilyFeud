@@ -110,6 +110,10 @@ const domUpdates = {
     $('.inputs__player2').addClass('hidden');
   },
 
+  setFastRoundHeader() {
+    $('.container__round').html('F A $ T - R O U N D')
+  },
+
 }
 
 export default domUpdates 
