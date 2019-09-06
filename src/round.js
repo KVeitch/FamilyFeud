@@ -2,14 +2,14 @@ import Turn from './turn';
 import domUpdates from './domUpdates';
 
 class Round {
-  constructor(survey, player1, player2, currentPlayer=1) {
+  constructor(survey, player1, player2, currentPlayer = 1) {
     this.survey = survey;
     this.player1Name = player1;
     this.player2Name = player2;
     this.turn = {};
     this.currentPlayer = currentPlayer;
-	this.answersRevealed = 0
-	this.guessedAnswers = []
+    this.answersRevealed = 0
+    this.guessedAnswers = []
   }
 
   togglePlayer() {
@@ -28,9 +28,9 @@ class Round {
     this.turn = new Turn(this.survey.answers, this.currentPlayer)
   }
 
-	addAnswerToGuessedAnswers(answer){
-		this.guessedAnswers.push(answer)
-	}
+  addAnswerToGuessedAnswers(answer) {
+    this.guessedAnswers.push(answer)
+  }
 
 }
 

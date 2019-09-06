@@ -17,12 +17,12 @@ class FastMoneyRound extends Round {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
-    }
+    } // needs to go to domUpdates
   }
 
   playerTimeOut() {
     $('.container__round--timer').text('')
-  }
+  } // needs to go to domUpdates
 
   playerRoundFeedback() {
     // Gives feedback to player for Fast Round
@@ -31,3 +31,11 @@ class FastMoneyRound extends Round {
 }
 
 export default FastMoneyRound;
+
+
+// be able to switch players and create a new fastMoneyRound
+// end the actual game in DOM & functionality & instantiates a new Game
+// finish all testing
+// overall refactor 
+// finish CSSing
+

@@ -62,7 +62,7 @@ function playerSubmitButtonHelper() {
       domUpdates.clearGuessInput(); 
     } 
   } else {
-    if($('.player1__guess').val() || $('.player2__guess').val()) {
+    if ($('.player1__guess').val() || $('.player2__guess').val()) {
       let currentPlayer = game[`player${game.round.currentPlayer}`]
       let answer = game.round.turn.hasAnswer(game.round);
       
@@ -81,7 +81,7 @@ function playerSubmitButtonHelper() {
 }
 
 function playerButtonHelper() {
-  if( $('.player__input1').val() &&  $('.player__input2').val()) {
+  if ( $('.player__input1').val() &&  $('.player__input2').val()) {
     domUpdates.removeDarkenFilter();
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
@@ -109,21 +109,20 @@ function checkNewRoundStart() {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
     game.startFastRound();
-    repopulateDOM();
     domUpdates.setFastRoundHeader();
     setTimeout(()=> {
       let currentPlayer = game[`player${game.round.currentPlayer}`].name
-      console.log(currentPlayer)
-      domUpdates.displayFastRoundWarning(currentPlayer)}, 5000);
-    setTimeout(() => {domUpdates.removeFeedback()}, 7000);
-    setTimeout(()=> {game.round.startTime(game)}, 9000);
+      domUpdates.displayFastRoundWarning(currentPlayer) }, 4000);
+    setTimeout(() => { 
+      domUpdates.removeFeedback();
+      repopulateDOM();
+    }, 7000);
+    setTimeout(()=> { game.round.startTime(game) }, 7000);
   }
 }
 
 function repopulateDOM() {
-  setTimeout(()=>{
     domUpdates.appendSurvey(game);
     domUpdates.appendAnswers(game);
     domUpdates.updateRoundNumber(game);
-  },3000)
 }

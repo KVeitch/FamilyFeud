@@ -11,7 +11,7 @@ class Game {
     this.data = data;
     this.surveys = [];
     this.round = {};
-    this.roundCount = 2;
+    this.roundCount = 1;
     this.player1 = {};
     this.player2 = {};
   }
@@ -37,7 +37,7 @@ class Game {
       this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
   }
 
-  startFastRound(){
+  startFastRound() {
     this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1, this.player2)
     this.round.makeNewTurn();
   }
