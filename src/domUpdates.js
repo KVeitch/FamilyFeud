@@ -100,6 +100,16 @@ const domUpdates = {
   updateRoundNumber(game) {
     $('#round-number').text(game.roundCount)
   },
+
+  appendTimer() {
+    // Appends timer to DOM
+  },
+
+  setFastRoundPlayer1() {
+    $('.inputs__player1').removeClass('hidden');
+    $('.inputs__player2').addClass('hidden');
+  },
+
 }
 
 export default domUpdates 

@@ -14,18 +14,18 @@ const data = {
     { id: 4, question: 'Why Might A Family Move Into A Bigger House?' }
   ],
   answers: [
-    { answer: 'Alarm Clock', respondents: 34, surveyId: 3 },
-    { answer: 'Beer', respondents: 67, surveyId: 1 },
-    { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
-    { answer: 'Buy It', respondents: 4, surveyId: 2 },
-    { answer: 'Calendar', respondents: 3, surveyId: 3 },
-    { answer: 'Donuts', respondents: 24, surveyId: 1 },
-    { answer: 'Remove Price Tag', respondents: 27, surveyId: 2 },
-    { answer: 'Watch', respondents: 58, surveyId: 3 },
-    { answer: 'Wrap It', respondents: 61, surveyId: 2 },
-    { answer: 'Can Afford More', respondents: 5, surveyId: 4 },
-    { answer: 'Family Has Grown', respondents: 61, surveyId: 4 },
-    { answer: 'Want More Space', respondents: 33, surveyId: 4 }
+    { answer: '1', respondents: 34, surveyId: 3 },
+    { answer: '1', respondents: 67, surveyId: 1 },
+    { answer: '2', respondents: 5, surveyId: 1 },
+    { answer: '1', respondents: 4, surveyId: 2 },
+    { answer: '2', respondents: 3, surveyId: 3 },
+    { answer: '3', respondents: 24, surveyId: 1 },
+    { answer: '2', respondents: 27, surveyId: 2 },
+    { answer: '3', respondents: 58, surveyId: 3 },
+    { answer: '3', respondents: 61, surveyId: 2 },
+    { answer: '1', respondents: 5, surveyId: 4 },
+    { answer: '2', respondents: 61, surveyId: 4 },
+    { answer: '3', respondents: 33, surveyId: 4 }
   ]
 };
 
