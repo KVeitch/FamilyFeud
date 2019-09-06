@@ -8,7 +8,8 @@ class Round {
     this.player2Name = player2;
     this.turn = {};
     this.currentPlayer = 1;
-    this.answersRevealed = 0
+		this.answersRevealed = 0
+		this.guessedAnswers = []
   }
 
   togglePlayer() {
@@ -23,17 +24,14 @@ class Round {
     }
   }
 
-  getSurveyAnswers() {
-    //pass to turn an array sorted by # of responses
-  }
-
   makeNewTurn() {
     this.turn = new Turn(this.survey.answers, this.currentPlayer)
   }
 
-  removeCorrectAnswer() {
-    // removes a correctly guessed answer from the answer surver - this.survey
-  }
+	addAnswerToGuessedAnswers(answer){
+		this.guessedAnswers.push(answer)
+	}
+
 }
 
 export default Round;

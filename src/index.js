@@ -52,20 +52,27 @@ $('document').ready(() => $('.player__input1').focus())
 
 
 function playerSubmitButtonHelper() {
-  if($('.player1__guess').val() || $('.player2__guess').val()) {
-    let currentPlayer = game[`player${game.round.currentPlayer}`]
-    let answer = game.round.turn.hasAnswer(game.round);
-    
-    game.round.turn.giveFeedback(answer, game);
-    game.round.turn.increaseScore(answer, currentPlayer);
-    domUpdates.postScore(game, game.round.currentPlayer);
-    domUpdates.clearGuessInput();
-    checkToRevealAnswer(answer);
-    game.round.togglePlayer();
-    game.round.makeNewTurn();
-    domUpdates.togglePlayerDisplays();
-    domUpdates.removeFeedback(game);
-    checkNewRoundStart();
+  if (game.roundCount === 3) {
+    if ($('.player1__guess').val() || $('.player2__guess').val()) {
+      let currentPlayer = game[`player${game.round.currentPlayer}`]
+      let answer = game.round.turn.hasAnswer(game.round); 
+    } 
+  } else {
+    if($('.player1__guess').val() || $('.player2__guess').val()) {
+      let currentPlayer = game[`player${game.round.currentPlayer}`]
+      let answer = game.round.turn.hasAnswer(game.round);
+      
+      game.round.turn.giveFeedback(answer, game);
+      game.round.turn.increaseScore(answer, currentPlayer);
+      domUpdates.postScore(game, game.round.currentPlayer);
+      domUpdates.clearGuessInput();
+      checkToRevealAnswer(answer);
+      game.round.togglePlayer();
+      game.round.makeNewTurn();
+      domUpdates.togglePlayerDisplays();
+      domUpdates.removeFeedback(game);
+      checkNewRoundStart();
+    }
   }
 }
 
@@ -93,6 +100,8 @@ function checkNewRoundStart() {
     domUpdates.hideAnswers();
     game.continueGame();
     repopulateDOM()
+  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+    game.startFastRound()
   }
 }
 
