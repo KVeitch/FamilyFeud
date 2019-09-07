@@ -30,7 +30,6 @@ class Game {
     
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
-      console.log(this.surveys);
   }
 
   startRound() {
@@ -38,15 +37,9 @@ class Game {
   }
 
   startFastRound() {
-    this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1, this.player2)
+    this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
     this.round.makeNewTurn();
   }
-
-  // continueGame() {
-  //   this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
-  //   console.log('after: ', this.round.currentPlayer)
-  //   this.round.makeNewTurn();
-  // }
 
   makePlayers(player1Name, player2Name) {
     this.player1 = new Player(player1Name)

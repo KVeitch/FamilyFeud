@@ -29,7 +29,6 @@ class FastMoneyRound extends Round {
       game.round.playerTimeOut();
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
-      
     }
   }
 
