@@ -17,7 +17,7 @@ class Game {
   }
 
   getSurveys() {
-    while (this.surveys.length < 4) {
+    while (this.surveys.length < 5) {
       let id = Math.ceil(Math.random() * this.data.surveys.length);
       if (this.surveys.indexOf(id) === -1) this.surveys.push(id);
     }
@@ -30,17 +30,21 @@ class Game {
     
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
-    console.log(this.surveys)  
-  }
+      console.log(this.surveys)
+    }
 
   startRound() {
-      this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
+    this.round = new Round(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name, this.round.currentPlayer);
   }
 
   startFastRound() {
-    console.log(this.surveys[this.roundCount - 1])
-    this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
-    this.round.makeNewTurn();
+    if (this.roundCount === 3) {
+      this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
+      this.round.makeNewTurn();
+      this.round.togglePlayer();
+    } else if (this.roundCount === 4) {
+      this.round = new FastMoneyRound(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
+    }
   }
 
   makePlayers(player1Name, player2Name) {

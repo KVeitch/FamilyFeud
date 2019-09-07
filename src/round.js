@@ -24,10 +24,12 @@ class Round {
     } 
 	
   }
+  
   getGameWinner(game) {
     let winner =  game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
     return winner;
   }
+
   makeNewTurn() {
     this.turn = new Turn(this.survey.answers, this.currentPlayer)
   }

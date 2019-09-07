@@ -15,6 +15,7 @@ const domUpdates = {
   },
 
   appendAnswers(game) {
+    console.log(game.roundCount)
     $('#jq-answer0').text(`${game.round.turn.answers[0].answer}`);
     $('#jq-answer1').text(`${game.round.turn.answers[1].answer}`);
     $('#jq-answer2').text(`${game.round.turn.answers[2].answer}`);
@@ -40,7 +41,7 @@ const domUpdates = {
       $('#jq-answer2').toggle();
       $('#jq-dollar2').toggle();
       $('#jq-value2').toggle();
-    },3000)
+    }, 3000)
   },
 
   badFeedback() {
@@ -64,8 +65,8 @@ const domUpdates = {
   },
   
   removeFeedback() {
-      $('.round-feedback').toggle('none');
-      $('.round-feedback').html('');
+    $('.round-feedback').toggle('none');
+    $('.round-feedback').html('');
   },
 
   postScore(game, playerNumber) {
@@ -136,6 +137,7 @@ const domUpdates = {
       `<div class='feedback__style'>
           <h3>$$$ Congrats ${winner} $$$</h3>
           <p> you won the game! </p>
+          <button class="inputs__reset">NEW GAME</button>
       </div>`
     );
     $('.round-feedback').toggle('none')

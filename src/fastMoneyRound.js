@@ -15,7 +15,7 @@ class FastMoneyRound extends Round {
       if (timeLeft == 0) {
         clearTimeout(game.round.timerId);
         game.round.removeTimerText();
-        game.round.fastRoundTimeout(game);
+        // game.round.fastRoundTimeout(game);
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
@@ -58,11 +58,3 @@ class FastMoneyRound extends Round {
 }
 
 export default FastMoneyRound;
-
-
-// be able to switch players and create a new fastMoneyRound
-// end the actual game in DOM & functionality & instantiates a new Game
-// finish all testing
-// overall refactor 
-// finish CSSing
-// multiplier make it happen baby

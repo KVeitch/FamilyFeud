@@ -10,9 +10,9 @@ import Game from './game';
 ////////////comment out the following for live data fetch////////////////
 /////////////////////////////////////////////////////////////////////////
 
-import data from '../test/sample-data-3surveys';
-let game = new Game(data);
-game.getSurveys()
+// import data from '../test/sample-data-3surveys';
+// let game = new Game(data);
+// game.getSurveys()
 
 /////////////////////////////////////////////////////////////////////////
 //////////////comment out the above for live data fetch//////////////////
@@ -24,19 +24,19 @@ game.getSurveys()
 //////////Uncomment out the following for live data fetch////////////////
 /////////////////////////////////////////////////////////////////////////
 
-// let game
-// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
-//   .then(fetchData => fetchData.json())
-//   .then(fdata => createGame(fdata.data) )
-//   .catch(error => console.log(error))
+let game
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+  .then(fetchData => fetchData.json())
+  .then(fdata => createGame(fdata.data) )
+  .catch(error => console.log(error))
 
 
 
-// function createGame(data) {
-//   game = new Game(data);
-//   console.log('cg: ',game)
-//   game.getSurveys();
-// }
+function createGame(data) {
+  game = new Game(data);
+  console.log('cg: ',game)
+  game.getSurveys();
+}
 
 /////////////////////////////////////////////////////////////////////////
 ////////////Uncomment out the above for live data fetch//////////////////
@@ -59,10 +59,12 @@ $('.round-feedback').click( (event)=> {
 });
 
 function continueFR() {
+  // game.roundCount++
+  game.startFastRound(); 
   game.round.multiplier = parseInt($('#multiplier-input').val());
   domUpdates.removeFeedback();
+  repopulateDOM();
   game.round.startTime(game);
-  repopulateDOM()
 }
 
 function playerSubmitButtonHelper() {
@@ -79,12 +81,12 @@ function roundFastRoundGuess(answer, currentPlayer) {
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
   checkToRevealAnswer(answer);
-  btnEndGame();
   checkNewRoundStart();
+  btnEndGame();
 } 
 
 function btnEndGame() {
-  if(game.roundCount === 5 && game.round.answersRevealed === 3) {
+  if(game.roundCount === 4 && game.round.answersRevealed === 3) {
     domUpdates.displayGameWinner(game.round.getGameWinner(game))
   }
 }
@@ -124,23 +126,20 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if (game.roundCount === 2 && game.round.answersRevealed === 3) { 
+  if (game.roundCount < 3 && game.round.answersRevealed === 3) { 
     domUpdates.hideAnswers();
     game.startRound();
     game.round.makeNewTurn();
     repopulateDOM();
-  } else if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
+  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
-    domUpdates.setFastRoundPlayer1();
-    game.startFastRound(); 
     // game.round.clearTimer(game); //stop timer if they guess three correct answers
     domUpdates.setFastRoundHeader();
     setTimeout(()=> {
-      let currentPlayer = game[`player${game.round.currentPlayer}`].name
-      domUpdates.displayFastRoundWarning(currentPlayer) 
+      let currentPlayer = game[`player${game.round.currentPlayer}`].name;
+      domUpdates.displayFastRoundWarning(currentPlayer);
     }, 4000);
-    game.roundCount++
-  } 
+  }
 } // we will update this to be a switch statement
 
 function repopulateDOM() {
