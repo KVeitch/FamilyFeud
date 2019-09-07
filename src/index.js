@@ -52,40 +52,45 @@ $('document').ready(() => $('.player__input1').focus())
 
 
 function playerSubmitButtonHelper() {
-  if (game.roundCount >= 3) {
-    if ($('.player1__guess').val() || $('.player2__guess').val()) {
-      let currentPlayer = game[`player${game.round.currentPlayer}`]
-      let answer = game.round.turn.hasAnswer(game.round);
-      
-      game.round.turn.giveFeedback(answer, game);
-      game.round.turn.increaseScore(answer, currentPlayer);
-      domUpdates.postScore(game, game.round.currentPlayer);
-      domUpdates.clearGuessInput(); 
-
-
-      domUpdates.removeFeedback(game);
-    } 
-  } else {
-    if($('.player1__guess').val() || $('.player2__guess').val()) {
-      let currentPlayer = game[`player${game.round.currentPlayer}`]
-      let answer = game.round.turn.hasAnswer(game.round);
-      
-      game.round.turn.giveFeedback(answer, game);
-      game.round.turn.increaseScore(answer, currentPlayer);
-      domUpdates.postScore(game, game.round.currentPlayer);
-      domUpdates.clearGuessInput();
-      checkToRevealAnswer(answer);
-      game.round.togglePlayer();
-      game.round.makeNewTurn();
-      domUpdates.togglePlayerDisplays();
-      domUpdates.removeFeedback(game);
-      checkNewRoundStart();
-    }
+  if ($('.player1__guess').val() || $('.player2__guess').val()) {
+    let currentPlayer = game[`player${game.round.currentPlayer}`]
+    let answer = game.round.turn.hasAnswer(game.round);
+    game.roundCount >= 3 ? round3ButtonHelper(answer, currentPlayer) : round1And2ButtonHelper(answer, currentPlayer);
   }
 }
 
+function round3ButtonHelper(answer, currentPlayer) {
+  game.round.turn.increaseScore(answer, currentPlayer);
+  domUpdates.postScore(game, game.round.currentPlayer);
+  domUpdates.clearGuessInput();
+  checkToRevealAnswer(answer);
+  btnEndGame();
+  checkNewRoundStart();
+} 
+
+function btnEndGame() {
+  if(game.roundCount === 5 && game.round.answersRevealed === 3) {
+    domUpdates.displayGameWinner(game.round.getGameWinner(game))
+  }
+}
+
+function round1And2ButtonHelper(answer, currentPlayer) {
+  game.round.turn.giveFeedback(answer, game);
+  game.round.turn.increaseScore(answer, currentPlayer);
+  domUpdates.postScore(game, game.round.currentPlayer);
+  domUpdates.clearGuessInput();
+  checkToRevealAnswer(answer);
+  game.round.togglePlayer();
+  game.round.makeNewTurn();
+  domUpdates.togglePlayerDisplays();
+  setTimeout(() => {
+    domUpdates.removeFeedback()
+  }, 2000);
+  checkNewRoundStart();
+}
+
 function playerButtonHelper() {
-  if( $('.player__input1').val() &&  $('.player__input2').val()) {
+  if ( $('.player__input1').val() &&  $('.player__input2').val()) {
     domUpdates.removeDarkenFilter();
     game.makePlayers($('.player__input1').val(), $('.player__input2').val());
     game.startRound();
@@ -104,25 +109,34 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if(game.roundCount === 2 && game.round.answersRevealed === 3) { 
+  if (game.roundCount === 2 && game.round.answersRevealed === 3) { 
     domUpdates.hideAnswers();
     game.startRound();
     game.round.makeNewTurn();
-    repopulateDOM()
-  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+    repopulateDOM();
+  } else if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
-    // domUpdates.fastMoneyRoundWarning()
-    game.startFastRound()
-    repopulateDOM()
-    setTimeout(()=> { game.round.startTime(game)} , 3100);
-  }
-}
+    game.startFastRound();
+    game.round.playerTimeOut();
+    domUpdates.setFastRoundHeader();
+    setTimeout(()=> {
+      let currentPlayer = game[`player${game.round.currentPlayer}`].name
+      domUpdates.displayFastRoundWarning(currentPlayer) 
+    }, 4000);
+    setTimeout(() => { 
+      domUpdates.removeFeedback();
+      repopulateDOM();
+    }, 7000);
+    setTimeout(()=> {
+      game.round.startTime(game) 
+    }, 7000);
+    game.roundCount++
+  } 
+} // we will update this to be a switch statement
 
 function repopulateDOM() {
-  setTimeout(()=>{
-    domUpdates.appendSurvey(game);
-    domUpdates.appendAnswers(game);
-    domUpdates.updateRoundNumber(game);
-  },3000)
+  domUpdates.appendSurvey(game);
+  domUpdates.appendAnswers(game);
+  domUpdates.updateRoundNumber(game);
 }
