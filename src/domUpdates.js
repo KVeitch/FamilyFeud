@@ -85,7 +85,7 @@ const domUpdates = {
     $('.round-feedback').append(
       `<div class='feedback__style'>
           <h3>$$$ Nice Job ${winner} $$$</h3>
-          <p> You've won this round! </p>
+          <p> You're ahead in points! </p>
       </div>`
     )
     $('.round-feedback').toggle('none')
