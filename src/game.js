@@ -11,7 +11,7 @@ class Game {
     this.data = data;
     this.surveys = [];
     this.round = {};
-    this.roundCount = 2;
+    this.roundCount = 1;
     this.player1 = {};
     this.player2 = {};
   }

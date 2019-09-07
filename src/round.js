@@ -9,7 +9,7 @@ class Round {
     this.turn = {};
     this.currentPlayer = currentPlayer;
     this.answersRevealed = 0;
-    this.guessedAnswers = []
+    this.guessedAnswers = [];
   }
 
   togglePlayer() {

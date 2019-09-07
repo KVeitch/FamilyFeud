@@ -68,6 +68,7 @@ function continueFR() {
 }
 
 function playerSubmitButtonHelper() {
+  console.log(game.roundCount)
   if ($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
     let answer = game.round.turn.hasAnswer(game.round);
@@ -76,7 +77,6 @@ function playerSubmitButtonHelper() {
 }
 
 function roundFastRoundGuess(answer, currentPlayer) {
-  console.log('indx: ',game.round.survey)
   game.round.turn.increaseScore(answer, currentPlayer, game.round.multiplier);
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
@@ -132,6 +132,7 @@ function checkNewRoundStart() {
     game.round.makeNewTurn();
     repopulateDOM();
   } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
+    game.roundCount++;
     domUpdates.hideAnswers();
     // game.round.clearTimer(game); //stop timer if they guess three correct answers
     domUpdates.setFastRoundHeader();
