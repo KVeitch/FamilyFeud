@@ -4,16 +4,17 @@ import Game from './game';
 class FastMoneyRound extends Round {
   constructor(survey, player1, player2) {
     super(survey, player1, player2)
+    this.timerId = 0
   }
 
   startTime(game) {
     let timeLeft = 30;
-    let timerId = setInterval(countdown, 1000);
+    game.round.timerId = setInterval(countdown, 1000);
     function countdown() {
       if (timeLeft == 0) {
-        clearTimeout(timerId);
-        game.round.playerTimeOut();
-        fastRoundTimeout();
+        clearTimeout(game.round.timerId);
+        game.round.removeTimerText();
+        game.round.fastRoundTimeout(game);
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
@@ -21,7 +22,14 @@ class FastMoneyRound extends Round {
     } 
   }
 
-  fastRoundTimeout() {
+  clearTimer(game) {
+    console.log(game.round)
+    clearInterval(game.round.timerId);
+    game.round.removeTimerText();
+    // playerTimeOut();
+  }
+
+  fastRoundTimeout(game) {
     if (game.roundCount === 3) {
       domUpdates.hideAnswers();
       domUpdates.setFastRoundPlayer1();
@@ -29,10 +37,13 @@ class FastMoneyRound extends Round {
       game.round.playerTimeOut();
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
+      console.log('fastRoundTimeOut round 4')
+    } else if (game.roundCount === 5) {
+      console.log('fastRoundTimeOut round 5')
     }
   }
 
-  playerTimeOut() {
+  removeTimerText() {
     $('.container__round--timer').text('')
   } // needs to go to domUpdates
 
