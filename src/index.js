@@ -47,9 +47,23 @@ $('.inputs__reset').click(() => location.reload());
 $('.player__button').click(playerButtonHelper);
 
 $('.jq-submit').click(playerSubmitButtonHelper);
-$('document').ready(() => $('.player__input1').focus())
-// $('.player2__button').click(player2ButtonHelper);
 
+$(document).ready(() => {
+  $('.player__input1').focus()
+})
+
+$('.round-feedback').click( (event)=> {
+  if (event.target.id === 'multiplier-btn') {
+  continueFR();
+  }
+});
+
+function continueFR() {
+  game.round.multiplier = parseInt($('#multiplier-input').val());
+  domUpdates.removeFeedback();
+  game.round.startTime(game);
+  repopulateDOM()
+}
 
 function playerSubmitButtonHelper() {
   if ($('.player1__guess').val() || $('.player2__guess').val()) {
@@ -60,7 +74,8 @@ function playerSubmitButtonHelper() {
 }
 
 function roundFastRoundGuess(answer, currentPlayer) {
-  game.round.turn.increaseScore(answer, currentPlayer);
+  console.log('indx: ',game.round.survey)
+  game.round.turn.increaseScore(answer, currentPlayer, game.round.multiplier);
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
   checkToRevealAnswer(answer);
@@ -117,21 +132,13 @@ function checkNewRoundStart() {
   } else if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
-    game.startFastRound(); //stop timer if they guess three correct answers
-    game.round.clearTimer(game);
-    // game.round.playerTimeOut();
+    game.startFastRound(); 
+    // game.round.clearTimer(game); //stop timer if they guess three correct answers
     domUpdates.setFastRoundHeader();
     setTimeout(()=> {
       let currentPlayer = game[`player${game.round.currentPlayer}`].name
       domUpdates.displayFastRoundWarning(currentPlayer) 
     }, 4000);
-    setTimeout(() => { 
-      domUpdates.removeFeedback();
-      repopulateDOM();
-    }, 7000);
-    setTimeout(()=> {
-      game.round.startTime(game) 
-    }, 7000);
     game.roundCount++
   } 
 } // we will update this to be a switch statement

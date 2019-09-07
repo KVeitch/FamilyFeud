@@ -30,6 +30,7 @@ class Game {
     
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
+    console.log(this.surveys)  
   }
 
   startRound() {
@@ -37,6 +38,7 @@ class Game {
   }
 
   startFastRound() {
+    console.log(this.surveys[this.roundCount - 1])
     this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
     this.round.makeNewTurn();
   }

@@ -117,6 +117,15 @@ const domUpdates = {
       `<div class='feedback__style'>
           <h3>$$$ Get ready ${currentPlayer} $$$</h3>
           <p> your fa$t round is about to start! </p>
+
+          <select id='multiplier-input'>
+            <option value='1'>1x Your Money</option>
+            <option value='2'>2x Your Money</option>
+            <option value='3'>3x Your Money</option>
+            <option value='4'>4x Your Money</option>
+            <option value='5'>5x Your Money</option>
+          </select>
+          <button id="multiplier-btn">THI$ MUCH</button>
       </div>`
     );
     $('.round-feedback').toggle('none')

@@ -4,7 +4,8 @@ import Game from './game';
 class FastMoneyRound extends Round {
   constructor(survey, player1, player2) {
     super(survey, player1, player2)
-    this.timerId = 0
+    this.timerId = 0;
+    this.multiplier = 1;
   }
 
   startTime(game) {
@@ -51,6 +52,9 @@ class FastMoneyRound extends Round {
     // Gives feedback to player for Fast Round
   }
 
+  assignMultiplier(multiplier) {
+    this.multiplier = multiplier;
+  }
 }
 
 export default FastMoneyRound;
