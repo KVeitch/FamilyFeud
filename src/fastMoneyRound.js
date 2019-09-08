@@ -1,10 +1,11 @@
 import Round from './round'
-import Game from './game';
+// import Game from './game';
 
 class FastMoneyRound extends Round {
   constructor(survey, player1, player2) {
     super(survey, player1, player2)
-    this.timerId = 0
+    this.timerId = 0;
+    this.multiplier = 1;
   }
 
   startTime(game) {
@@ -14,7 +15,7 @@ class FastMoneyRound extends Round {
       if (timeLeft == 0) {
         clearTimeout(game.round.timerId);
         game.round.removeTimerText();
-        game.round.fastRoundTimeout(game);
+        // game.round.fastRoundTimeout(game);
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
@@ -38,8 +39,6 @@ class FastMoneyRound extends Round {
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
       console.log('fastRoundTimeOut round 4')
-    } else if (game.roundCount === 5) {
-      console.log('fastRoundTimeOut round 5')
     }
   }
 
@@ -51,14 +50,10 @@ class FastMoneyRound extends Round {
     // Gives feedback to player for Fast Round
   }
 
+  assignMultiplier(multiplier) {
+    console.log('muli:',multiplier,'assign: ',this)
+    this.multiplier = multiplier;
+  }
 }
 
 export default FastMoneyRound;
-
-
-// be able to switch players and create a new fastMoneyRound
-// end the actual game in DOM & functionality & instantiates a new Game
-// finish all testing
-// overall refactor 
-// finish CSSing
-// multiplier make it happen baby

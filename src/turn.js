@@ -1,5 +1,5 @@
 import domUpdates from './domUpdates';
-import Game from './game';
+// import Game from './game';
 
 
 class Turn {
@@ -32,7 +32,9 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
-    answer.answer === undefined ? null : player.updateScore( multiplier * answer.answer.respondents)
+    console.log(answer)
+    answer.answer === undefined ? null : 
+      player.updateScore( parseInt(multiplier) * parseInt(answer.answer.respondents))
   }
 }
 

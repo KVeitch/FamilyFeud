@@ -10,9 +10,9 @@ import Game from './game';
 ////////////comment out the following for live data fetch////////////////
 /////////////////////////////////////////////////////////////////////////
 
-import data from '../test/sample-data-3surveys';
-let game = new Game(data);
-game.getSurveys()
+// import data from '../test/sample-data-3surveys';
+// let game = new Game(data);
+// game.getSurveys()
 
 /////////////////////////////////////////////////////////////////////////
 //////////////comment out the above for live data fetch//////////////////
@@ -24,19 +24,18 @@ game.getSurveys()
 //////////Uncomment out the following for live data fetch////////////////
 /////////////////////////////////////////////////////////////////////////
 
-// let game
-// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
-//   .then(fetchData => fetchData.json())
-//   .then(fdata => createGame(fdata.data) )
-//   .catch(error => console.log(error))
+let game
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+  .then(fetchData => fetchData.json())
+  .then(fdata => createGame(fdata.data) )
+  .catch(error => console.log(error))
 
 
 
-// function createGame(data) {
-//   game = new Game(data);
-//   console.log('cg: ',game)
-//   game.getSurveys();
-// }
+function createGame(data) {
+  game = new Game(data);
+  game.getSurveys();
+}
 
 /////////////////////////////////////////////////////////////////////////
 ////////////Uncomment out the above for live data fetch//////////////////
@@ -47,11 +46,27 @@ $('.inputs__reset').click(() => location.reload());
 $('.player__button').click(playerButtonHelper);
 
 $('.jq-submit').click(playerSubmitButtonHelper);
-$('document').ready(() => $('.player__input1').focus())
-// $('.player2__button').click(player2ButtonHelper);
 
+$(document).ready(() => {
+  $('.player__input1').focus()
+})
+
+$('.round-feedback').click( (event)=> {
+  if (event.target.id === 'multiplier-btn') {
+    game.round.assignMultiplier(parseInt($('#multiplier-input').val()));
+    continueFR();
+  }
+});
+
+function continueFR() {
+  repopulateDOM();
+  domUpdates.removeFeedback();
+  game.round.startTime(game);
+}
 
 function playerSubmitButtonHelper() {
+  console.log('rndCT: ', game.roundCount,'scores: ', game.player1.score, game.player2.score)
+  console.log(game.round.turn.answers)
   if ($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
     let answer = game.round.turn.hasAnswer(game.round);
@@ -60,16 +75,17 @@ function playerSubmitButtonHelper() {
 }
 
 function roundFastRoundGuess(answer, currentPlayer) {
-  game.round.turn.increaseScore(answer, currentPlayer);
+  console.log(game.round.multiplier)
+  game.round.turn.increaseScore(answer, currentPlayer, game.round.multiplier);
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
   checkToRevealAnswer(answer);
-  btnEndGame();
   checkNewRoundStart();
+  btnEndGame();
 } 
 
 function btnEndGame() {
-  if(game.roundCount === 5 && game.round.answersRevealed === 3) {
+  if(game.roundCount === 4 && game.round.answersRevealed === 3) {
     domUpdates.displayGameWinner(game.round.getGameWinner(game))
   }
 }
@@ -109,33 +125,35 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if (game.roundCount === 2 && game.round.answersRevealed === 3) { 
-    domUpdates.hideAnswers();
-    game.startRound();
-    game.round.makeNewTurn();
-    repopulateDOM();
-  } else if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
-    domUpdates.hideAnswers();
-    domUpdates.setFastRoundPlayer1();
-    game.startFastRound(); //stop timer if they guess three correct answers
-    game.round.clearTimer(game);
-    // game.round.playerTimeOut();
-    domUpdates.setFastRoundHeader();
-    setTimeout(()=> {
-      let currentPlayer = game[`player${game.round.currentPlayer}`].name
-      domUpdates.displayFastRoundWarning(currentPlayer) 
-    }, 4000);
-    setTimeout(() => { 
-      domUpdates.removeFeedback();
-      repopulateDOM();
-    }, 7000);
-    setTimeout(()=> {
-      game.round.startTime(game) 
-    }, 7000);
-    game.roundCount++
+  if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
+    startRound2();
+  } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
+    startRound3or4();
   } 
+  // else if ((game.roundCount === 3 ||game.roundCount === 4) && game.round.answersRevealed === 3) {
+  //   startRound4()
+  // }
 } // we will update this to be a switch statement
 
+function startRound2 () {
+  domUpdates.hideAnswers();
+  game.roundCount++; //new test
+  game.startRound();
+  game.round.makeNewTurn();
+  repopulateDOM();
+}
+
+function startRound3or4() {
+  domUpdates.hideAnswers();
+  domUpdates.setFastRoundHeader();
+  game.roundCount++; //new test
+  game.startFastRound(); 
+  setTimeout(()=> {
+    let currentPlayer = game[`player${game.round.currentPlayer}`].name;
+    domUpdates.displayFastRoundWarning(currentPlayer);
+  }, 4000);
+}
+ 
 function repopulateDOM() {
   domUpdates.appendSurvey(game);
   domUpdates.appendAnswers(game);

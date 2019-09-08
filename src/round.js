@@ -9,7 +9,7 @@ class Round {
     this.turn = {};
     this.currentPlayer = currentPlayer;
     this.answersRevealed = 0;
-    this.guessedAnswers = []
+    this.guessedAnswers = [];
   }
 
   togglePlayer() {
@@ -17,17 +17,17 @@ class Round {
   }
 
   getRoundWinner(game) {
-    if (this.answersRevealed === 3) {
-	  game.roundCount++
-      let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
-	  domUpdates.displayRoundWinner(winner)
-    } 
-	
+    console.log('getRW:')  
+    // game.roundCount++ //removed an placed in index.checkNewRoundStart()
+    let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
+    domUpdates.displayRoundWinner(winner)
   }
+  
   getGameWinner(game) {
     let winner =  game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
     return winner;
   }
+
   makeNewTurn() {
     this.turn = new Turn(this.survey.answers, this.currentPlayer)
   }
