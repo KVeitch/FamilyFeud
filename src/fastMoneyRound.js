@@ -1,5 +1,5 @@
 import Round from './round'
-import Game from './game';
+// import Game from './game';
 
 class FastMoneyRound extends Round {
   constructor(survey, player1, player2) {
@@ -39,8 +39,6 @@ class FastMoneyRound extends Round {
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
       console.log('fastRoundTimeOut round 4')
-    } else if (game.roundCount === 5) {
-      console.log('fastRoundTimeOut round 5')
     }
   }
 
