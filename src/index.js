@@ -34,7 +34,6 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
 
 function createGame(data) {
   game = new Game(data);
-  console.log('cg: ',game)
   game.getSurveys();
 }
 
@@ -59,16 +58,14 @@ $('.round-feedback').click( (event)=> {
 });
 
 function continueFR() {
-  // game.roundCount++
-  game.startFastRound(); 
-  game.round.multiplier = parseInt($('#multiplier-input').val());
-  domUpdates.removeFeedback();
   repopulateDOM();
+  domUpdates.removeFeedback();
   game.round.startTime(game);
 }
 
 function playerSubmitButtonHelper() {
-  console.log(game.roundCount)
+  console.log('rndCT: ', game.roundCount)
+  console.log(game.round.turn.answers)
   if ($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
     let answer = game.round.turn.hasAnswer(game.round);
@@ -131,15 +128,20 @@ function checkNewRoundStart() {
     game.startRound();
     game.round.makeNewTurn();
     repopulateDOM();
+    game.roundCount++ //new test
   } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
-    game.roundCount++;
+    console.log('in CNRS elseIf', game.roundCount)
+    // game.roundCount++;
+    // console.log('after', game.roundCount)
     domUpdates.hideAnswers();
     // game.round.clearTimer(game); //stop timer if they guess three correct answers
-    domUpdates.setFastRoundHeader();
+    domUpdates.setFastRoundHeader();  game.startFastRound(); 
+    game.round.multiplier = parseInt($('#multiplier-input').val());
     setTimeout(()=> {
       let currentPlayer = game[`player${game.round.currentPlayer}`].name;
       domUpdates.displayFastRoundWarning(currentPlayer);
     }, 4000);
+    game.roundCount++ //new test
   }
 } // we will update this to be a switch statement
 
