@@ -30,17 +30,15 @@ const domUpdates = {
   },
 
   hideAnswers() {
-    setTimeout(()=> {
-      $('#jq-answer0').toggle();
-      $('#jq-dollar0').toggle();
-      $('#jq-value0').toggle();
-      $('#jq-answer1').toggle();
-      $('#jq-dollar1').toggle();
-      $('#jq-value1').toggle();
-      $('#jq-answer2').toggle();
-      $('#jq-dollar2').toggle();
-      $('#jq-value2').toggle();
-    }, 3000)
+    $('#jq-answer0').toggle();
+    $('#jq-dollar0').toggle();
+    $('#jq-value0').toggle();
+    $('#jq-answer1').toggle();
+    $('#jq-dollar1').toggle();
+    $('#jq-value1').toggle();
+    $('#jq-answer2').toggle();
+    $('#jq-dollar2').toggle();
+    $('#jq-value2').toggle();
   },
 
   badFeedback() {

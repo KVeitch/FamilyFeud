@@ -51,6 +51,7 @@ class FastMoneyRound extends Round {
   }
 
   assignMultiplier(multiplier) {
+    console.log('muli:',multiplier,'assign: ',this)
     this.multiplier = multiplier;
   }
 }

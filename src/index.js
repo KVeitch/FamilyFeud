@@ -53,7 +53,8 @@ $(document).ready(() => {
 
 $('.round-feedback').click( (event)=> {
   if (event.target.id === 'multiplier-btn') {
-  continueFR();
+    game.round.assignMultiplier(parseInt($('#multiplier-input').val()));
+    continueFR();
   }
 });
 
@@ -64,7 +65,7 @@ function continueFR() {
 }
 
 function playerSubmitButtonHelper() {
-  console.log('rndCT: ', game.roundCount)
+  console.log('rndCT: ', game.roundCount,'scores: ', game.player1.score, game.player2.score)
   console.log(game.round.turn.answers)
   if ($('.player1__guess').val() || $('.player2__guess').val()) {
     let currentPlayer = game[`player${game.round.currentPlayer}`]
@@ -74,6 +75,7 @@ function playerSubmitButtonHelper() {
 }
 
 function roundFastRoundGuess(answer, currentPlayer) {
+  console.log(game.round.multiplier)
   game.round.turn.increaseScore(answer, currentPlayer, game.round.multiplier);
   domUpdates.postScore(game, game.round.currentPlayer);
   domUpdates.clearGuessInput();
@@ -123,27 +125,37 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if (game.roundCount < 3 && game.round.answersRevealed === 3) { 
-    domUpdates.hideAnswers();
-    game.startRound();
-    game.round.makeNewTurn();
-    repopulateDOM();
-    game.roundCount++ //new test
+  if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
+    startRound2();
+  } else if (game.roundCount === 2 && game.round.answersRevealed === 3) {
+    startRound3();
   } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
-    console.log('in CNRS elseIf', game.roundCount)
-    // game.roundCount++;
-    // console.log('after', game.roundCount)
-    domUpdates.hideAnswers();
-    // game.round.clearTimer(game); //stop timer if they guess three correct answers
-    domUpdates.setFastRoundHeader();  game.startFastRound(); 
-    game.round.multiplier = parseInt($('#multiplier-input').val());
-    setTimeout(()=> {
-      let currentPlayer = game[`player${game.round.currentPlayer}`].name;
-      domUpdates.displayFastRoundWarning(currentPlayer);
-    }, 4000);
-    game.roundCount++ //new test
+    startRound4()
   }
 } // we will update this to be a switch statement
+
+function startRound2 () {
+  domUpdates.hideAnswers();
+  game.roundCount++; //new test
+  game.startRound();
+  game.round.makeNewTurn();
+  repopulateDOM();
+}
+
+function startRound3() {
+  domUpdates.hideAnswers();
+  domUpdates.setFastRoundHeader();
+  game.roundCount++; //new test
+  game.startFastRound(); 
+  setTimeout(()=> {
+    let currentPlayer = game[`player${game.round.currentPlayer}`].name;
+    domUpdates.displayFastRoundWarning(currentPlayer);
+  }, 4000);
+}
+
+function startRound4() {
+  
+} 
 
 function repopulateDOM() {
   domUpdates.appendSurvey(game);

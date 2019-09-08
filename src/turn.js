@@ -32,8 +32,9 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
+    console.log(answer)
     answer.answer === undefined ? null : 
-      player.updateScore( multiplier * parseInt(answer.answer.respondents))
+      player.updateScore( parseInt(multiplier) * parseInt(answer.answer.respondents))
   }
 }
 
