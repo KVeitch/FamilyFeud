@@ -24,7 +24,6 @@ class FastMoneyRound extends Round {
   }
 
   clearTimer(game) {
-    console.log(game.round)
     clearInterval(game.round.timerId);
     game.round.removeTimerText();
     // playerTimeOut();
@@ -33,8 +32,9 @@ class FastMoneyRound extends Round {
   fastRoundTimeout(game) {
     if (game.roundCount === 3) {
       domUpdates.hideAnswers();
-      domUpdates.setFastRoundPlayer1();
       game.startFastRound();
+      // domUpdates.setFastRoundPlayer1();
+      domUpdates.appendNames(game)
       game.round.playerTimeOut();
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
@@ -51,7 +51,6 @@ class FastMoneyRound extends Round {
   }
 
   assignMultiplier(multiplier) {
-    console.log('muli:',multiplier,'assign: ',this)
     this.multiplier = multiplier;
   }
 }

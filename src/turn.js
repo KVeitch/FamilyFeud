@@ -18,7 +18,6 @@ class Turn {
       index = this.surveyAnswers.findIndex(answer => answer === playerGuess);
       round.answersRevealed++;
       round.addAnswerToGuessedAnswers(playerGuess)
-      // round.removeCorrectAnswer(index)
     }
     return {isCorrect, answer: this.answers[index], index};
   }

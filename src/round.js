@@ -13,11 +13,17 @@ class Round {
   }
 
   togglePlayer() {
-    this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
+    console.log('playertoggle1', this.currentPlayer)
+    if(this.currentPlayer === 1) {
+      this.currentPlayer = 2
+    } else {
+      this.currentPlayer = 1;
+    }
+    console.log('playertoggle2', this.currentPlayer)
+
   }
 
   getRoundWinner(game) {
-    console.log('getRW:')  
     // game.roundCount++ //removed an placed in index.checkNewRoundStart()
     let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
     domUpdates.displayRoundWinner(winner)
