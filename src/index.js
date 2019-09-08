@@ -127,11 +127,12 @@ function checkToRevealAnswer(answer) {
 function checkNewRoundStart() {
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
-  } else if (game.roundCount === 2 && game.round.answersRevealed === 3) {
-    startRound3();
-  } else if (game.roundCount === 3 && game.round.answersRevealed === 3) {
-    startRound4()
-  }
+  } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
+    startRound3or4();
+  } 
+  // else if ((game.roundCount === 3 ||game.roundCount === 4) && game.round.answersRevealed === 3) {
+  //   startRound4()
+  // }
 } // we will update this to be a switch statement
 
 function startRound2 () {
@@ -142,7 +143,7 @@ function startRound2 () {
   repopulateDOM();
 }
 
-function startRound3() {
+function startRound3or4() {
   domUpdates.hideAnswers();
   domUpdates.setFastRoundHeader();
   game.roundCount++; //new test
@@ -152,11 +153,7 @@ function startRound3() {
     domUpdates.displayFastRoundWarning(currentPlayer);
   }, 4000);
 }
-
-function startRound4() {
-  
-} 
-
+ 
 function repopulateDOM() {
   domUpdates.appendSurvey(game);
   domUpdates.appendAnswers(game);
