@@ -10,8 +10,6 @@ $light-green: #dcdcbb;
   box-sizing: border-box;
   margin: 0;
 	padding: 0;
-	// transition: 1s;
-	// border:1px solid red;
 }
 
 body {
@@ -109,7 +107,6 @@ button {
 	1px -1px 0 #000,
 	-1px 1px 0 #000,
 	 1px 1px 0 #000;
-	//  -webkit-text-fill-color: white; 
 }
 main {
 	display: flex;
@@ -132,7 +129,6 @@ main {
 		background-color: $dark-green;
 		border:10px double $light-green;
 	}
-
 
 	.main__game {
 		padding: 8px;
