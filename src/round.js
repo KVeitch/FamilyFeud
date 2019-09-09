@@ -12,12 +12,11 @@ class Round {
     this.guessedAnswers = [];
   }
 
-  togglePlayer() {
-    this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
+  togglePlayer(fnfire) {
+    this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1
   }
 
   getRoundWinner(game) {
-    console.log('getRW:')  
     // game.roundCount++ //removed an placed in index.checkNewRoundStart()
     let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
     domUpdates.displayRoundWinner(winner)

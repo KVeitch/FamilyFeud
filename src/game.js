@@ -1,6 +1,7 @@
 import Round from './round';
 import Player from '../src/player';
 import FastMoneyRound from './fastMoneyRound';
+import domUpdates from './domUpdates';
 // import domUpdates from './domUpdates';
 // const FastMoney = require('../src/fastMoney');
 // const Player = require('../src/player');
@@ -30,11 +31,8 @@ class Game {
     });
 
     this.surveys.forEach(survey =>
-      survey.answers.sort(
-        (answerA, answerB) => answerB.respondents - answerA.respondents
-      )
+      survey.answers.sort((ansA, ansB) => ansB.respondents - ansA.respondents)
     );
-    // console.log(this.surveys)
   }
 
   startRound() {
@@ -50,20 +48,12 @@ class Game {
     this.round = new FastMoneyRound(
       this.surveys[this.roundCount - 1],
       this.player1.name,
-      this.player2.name
+      this.player2.name,
+      this.round.currentPlayer
     );
     this.round.makeNewTurn();
-    this.round.togglePlayer();
-    // if (this.roundCount === 3) {
-    //   this.round = new FastMoneyRound (this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
-    //   this.round.makeNewTurn();
-    //   this.round.togglePlayer();
-    // } else if (this.roundCount === 4) {
-    //   this.round = new FastMoneyRound(this.surveys[this.roundCount - 1], this.player1.name, this.player2.name);
-    //   this.round.makeNewTurn();
-    // }
   }
-
+    
   makePlayers(player1Name, player2Name) {
     this.player1 = new Player(player1Name);
     this.player2 = new Player(player2Name);

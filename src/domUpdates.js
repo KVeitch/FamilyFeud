@@ -2,8 +2,8 @@
 const domUpdates = {
 
   appendNames(game) {
-    $('.jq-name1').text(game.player1.name);
-    $('.jq-name2').text(game.player2.name);
+    $('.jq-name1').text(game.round.player1Name);
+    $('.jq-name2').text(game.round.player2Name);
   },
 
   appendSurvey(game) {

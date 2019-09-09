@@ -18,7 +18,6 @@ class Turn {
       index = this.surveyAnswers.findIndex(answer => answer === playerGuess);
       round.answersRevealed++;
       round.addAnswerToGuessedAnswers(playerGuess)
-      // round.removeCorrectAnswer(index)
     }
     return {isCorrect, answer: this.answers[index], index};
   }
@@ -32,7 +31,7 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
-    console.log(answer)
+    // console.log(answer)
     answer.answer === undefined ? null : 
       player.updateScore( parseInt(multiplier) * parseInt(answer.answer.respondents))
   }
