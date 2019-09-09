@@ -139,6 +139,18 @@ const domUpdates = {
     );
     $('.round-feedback').toggle('none')
   },
+  
+  removeVisibility() {
+    $('#jq-answer0').hide();
+    $('#jq-dollar0').show();
+    $('#jq-value0').hide();
+    $('#jq-answer1').hide();
+    $('#jq-dollar1').show();
+    $('#jq-value1').hide();
+    $('#jq-answer2').hide();
+    $('#jq-dollar2').show();
+    $('#jq-value2').hide();
+  }
 }
 
 export default domUpdates 

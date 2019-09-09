@@ -54,9 +54,12 @@ $('.round-feedback').click( (event)=> {
   if (event.target.id === 'multiplier-btn') {
     game.round.assignMultiplier(parseInt($('#multiplier-input').val()));
     continueFR();
-
+  } 
+  if (event.target.className === 'inputs__reset') {
+    location.reload()
   }
 });
+
 
 function continueFR() {
   domUpdates.togglePlayerDisplays()
@@ -128,7 +131,7 @@ function checkNewRoundStart() {
   if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
     stopTimer();
   }
-  
+
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
   } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
@@ -144,9 +147,10 @@ function startRound2 () {
   game.round.makeNewTurn();
   repopulateDOM();
 }
+window.startRound3or4 = startRound3or4; 
 
 function startRound3or4() {
-  game.roundCount++; //new test
+  game.roundCount++; 
   domUpdates.hideAnswers();
   domUpdates.setFastRoundHeader();
   if (game.roundCount === 4) {
@@ -158,12 +162,16 @@ function startRound3or4() {
     let currentPlayer = game[`player${game.round.currentPlayer}`].name;
     domUpdates.displayFastRoundWarning(currentPlayer);
   }, 4000);
-  domUpdates.togglePlayerDisplays(); //new
-
+  domUpdates.togglePlayerDisplays();
 }
  
 function repopulateDOM() {
   domUpdates.appendSurvey(game);
   domUpdates.appendAnswers(game);
   domUpdates.updateRoundNumber(game);
+}
+window.hideAnswers = hideAnswers;
+
+function hideAnswers() {
+  domUpdates.removeVisibility();
 }
