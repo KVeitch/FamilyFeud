@@ -9,7 +9,7 @@ class FastMoneyRound extends Round {
   }
 
   startTime(game) {
-    let timeLeft = 5;
+    let timeLeft = 30;
     game.round.timerId = setInterval(countdown, 1000);
     
     function countdown() {
