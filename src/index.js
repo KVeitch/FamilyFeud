@@ -54,9 +54,12 @@ $('.round-feedback').click( (event)=> {
   if (event.target.id === 'multiplier-btn') {
     game.round.assignMultiplier(parseInt($('#multiplier-input').val()));
     continueFR();
-
+  } 
+  if (event.target.className === 'inputs__reset') {
+    location.reload()
   }
 });
+
 
 function continueFR() {
   domUpdates.togglePlayerDisplays()
