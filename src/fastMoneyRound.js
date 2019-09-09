@@ -11,6 +11,7 @@ class FastMoneyRound extends Round {
   startTime(game) {
     let timeLeft = 30;
     game.round.timerId = setInterval(countdown, 1000);
+    
     function countdown() {
       if (timeLeft == 0) {
         clearTimeout(game.round.timerId);
@@ -20,12 +21,15 @@ class FastMoneyRound extends Round {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
-    } 
-  }
+    }
 
-  clearTimer(game) {
-    clearInterval(game.round.timerId);
-    game.round.removeTimerText();
+    function stopTimer() {
+      clearInterval(game.round.timerId);
+      game.round.removeTimerText();
+    }
+    
+    window.countdown = countdown;
+    window.stopTimer = stopTimer; 
   }
 
   fastRoundTimeout(game) {

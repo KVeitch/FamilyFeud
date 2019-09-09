@@ -19,7 +19,7 @@ class Round {
   getRoundWinner(game) {
     // game.roundCount++ //removed an placed in index.checkNewRoundStart()
     let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
-    domUpdates.displayRoundWinner(winner)
+    domUpdates.displayRoundWinner(winner);
   }
   
   getGameWinner(game) {
