@@ -2,8 +2,8 @@ import Round from './round'
 // import Game from './game';
 
 class FastMoneyRound extends Round {
-  constructor(survey, player1, player2) {
-    super(survey, player1, player2)
+  constructor(survey, player1, player2, currentPlayer) {
+    super(survey, player1, player2, currentPlayer)
     this.timerId = 0;
     this.multiplier = 1;
   }
@@ -24,17 +24,15 @@ class FastMoneyRound extends Round {
   }
 
   clearTimer(game) {
-    console.log(game.round)
     clearInterval(game.round.timerId);
     game.round.removeTimerText();
-    // playerTimeOut();
   }
 
   fastRoundTimeout(game) {
     if (game.roundCount === 3) {
       domUpdates.hideAnswers();
-      domUpdates.setFastRoundPlayer1();
       game.startFastRound();
+      domUpdates.appendNames(game)
       game.round.playerTimeOut();
       domUpdates.setFastRoundHeader();
     } else if (game.roundCount === 4) {
@@ -46,12 +44,7 @@ class FastMoneyRound extends Round {
     $('.container__round--timer').text('')
   } // needs to go to domUpdates
 
-  playerRoundFeedback() {
-    // Gives feedback to player for Fast Round
-  }
-
   assignMultiplier(multiplier) {
-    console.log('muli:',multiplier,'assign: ',this)
     this.multiplier = multiplier;
   }
 }
