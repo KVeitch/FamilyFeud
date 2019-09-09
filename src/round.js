@@ -22,14 +22,15 @@ class Round {
       let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
 	  domUpdates.displayRoundWinner(winner)
     } 
+	}
 	
-  }
   getGameWinner(game) {
     let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
     if (game.roundCount === 4 && this.answersRevealed === 3) {
       domUpdates.displayGameWinner(winner);
     }
-  }
+	}
+	
   makeNewTurn() {
     this.turn = new Turn(this.survey.answers, this.currentPlayer)
   }

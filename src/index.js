@@ -114,7 +114,7 @@ function checkNewRoundStart() {
     game.startRound();
     game.round.makeNewTurn();
     repopulateDOM();
-  } else if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
+  } else if ((game.roundCount === 3 || game.roundCount === 4) &&  game.round.answersRevealed === 3) {
     domUpdates.hideAnswers();
     domUpdates.setFastRoundPlayer1();
     game.startFastRound();

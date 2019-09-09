@@ -30,7 +30,7 @@ class Game {
     
     this.surveys.forEach(survey => survey.answers
       .sort((answerA, answerB)=> answerB.respondents - answerA.respondents))
-      console.log(this.surveys);
+      // console.log(this.surveys);
   }
 
   startRound() {

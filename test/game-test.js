@@ -28,7 +28,7 @@ describe('GAME CLASS', function() {
     game = new Game(data)
     player1 = new Player('Kirk');
     player2 = new Player('Ayla');
-    // round = new Round(game.surveys[0], player1.name, player2.name);
+    // rozsklund = new Round(game.surveys[0], player1.name, player2.name);
     // turn = new Turn(round.survey.answers, round.currentPlayer);
     // console.log(turn)
   });
@@ -58,7 +58,7 @@ describe('GAME CLASS', function() {
     console.log('ROUND! ',Round)
 
     // expect(game.round).to.be.an.instanceOf(Round);
-    console.log("hi: ", game.round instanceof Round)
+    // console.log("hi: ", game.round instanceof Round)
     expect(game.round).to.be.an.instanceof(Round)
   });
   
