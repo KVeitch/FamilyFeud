@@ -5,7 +5,6 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import Game from './game';
 
-
 /////////////////////////////////////////////////////////////////////////
 ////////////comment out the following for live data fetch////////////////
 /////////////////////////////////////////////////////////////////////////
@@ -77,7 +76,6 @@ function playerSubmitButtonHelper() {
 }
 
 function roundFastRoundGuess(answer, currentPlayer) {
-  // debugger
   game.round.turn.increaseScore(answer, currentPlayer, game.round.multiplier);
   checkToRevealAnswer(answer);
   domUpdates.postScore(game, game.round.currentPlayer);
@@ -127,11 +125,16 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
+  if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
+    stopTimer();
+  }
+  
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
   } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
     startRound3or4();
   } 
+
 } 
 
 function startRound2 () {
