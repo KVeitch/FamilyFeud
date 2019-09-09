@@ -186,10 +186,11 @@ main {
 		z-index: 10;
 		background-color: #dcdcbb;
 		width: 50%;
-		height: 30%;
+		height: 35%;
 		min-height: 250px;
-		top: 40%;
-		left: 25%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		border: 10px double #244c3c;
 	}
 
@@ -265,4 +266,13 @@ main {
 	filter: brightness(50%);
 	background-color: #00000000;
 	background-image: url('../images/background-img.png')
+}
+
+#multiplier-input {
+	align-self: center;
+	width: 140px;
+	height: 50px;
+	font-size: 1em;
+	margin: 10px 0px;
+	padding: 0 10px;
 }
