@@ -1,8 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
-// const Player = require('../src/player');
 import Player from '../src/player'
-let player1, player2
+let player1, player2;
 
 describe('PLAYER CLASS', function() {
   beforeEach(() => {

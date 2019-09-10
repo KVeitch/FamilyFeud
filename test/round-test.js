@@ -2,11 +2,8 @@ import chai from 'chai';
 const expect = chai.expect;
 const data = require('./survey-sample-data');
 import Game from '../src/game'
-// const Player = require('../src/player');
 import Player from '../src/player';
-// const Round = require('../src/round');
 import Round from '../src/round';
-// const Turn = require('../src/turn');
 import Turn from '../src/turn';
 
 
@@ -23,7 +20,7 @@ describe('ROUND CLASS', function() {
     player1 = new Player('Kirk');
     player2 = new Player('Ayla');
     round = new Round();
-    // turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
+    turn = new Turn(round.getSurveyAnswers(), player1.name, player2.name);
   });
 
   it('Should have a single survey', () => {
