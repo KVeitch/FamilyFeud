@@ -1,11 +1,9 @@
 import domUpdates from './domUpdates';
-// import Game from './game';
-
 
 class Turn {
   constructor(answers, player) {
-    this.answers = answers; //array of answer objects with correct surveyId
-    this.player = player; //number 1 or 2
+    this.answers = answers; 
+    this.player = player; 
     this.surveyAnswers = answers.map(answer => answer.answer.toLowerCase()); 
   }
 
@@ -31,7 +29,6 @@ class Turn {
   }
 
   increaseScore(answer, player, multiplier = 1) {
-    // console.log(answer)
     answer.answer === undefined ? null : 
       player.updateScore( parseInt(multiplier) * parseInt(answer.answer.respondents))
   }
