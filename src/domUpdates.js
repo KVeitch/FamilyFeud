@@ -1,9 +1,8 @@
-//write anything to the dom it goes here
 const domUpdates = {
 
   appendNames(game) {
-    $('.jq-name1').text(game.player1.name);
-    $('.jq-name2').text(game.player2.name);
+    $('.jq-name1').text(game.round.player1Name);
+    $('.jq-name2').text(game.round.player2Name);
   },
 
   appendSurvey(game) {
@@ -67,7 +66,7 @@ const domUpdates = {
   },
 
   postScore(game, playerNumber) {
-    $(`.player${playerNumber}__score`).text(`$ ${game[`player${playerNumber}`].score}`);
+    $(`.player${playerNumber}__score`).text(`${game[`player${playerNumber}`].score}`);
   },
 
   clearGuessInput() {
@@ -95,10 +94,6 @@ const domUpdates = {
 
   updateRoundNumber(game) {
     $('#round-number').text(game.roundCount)
-  },
-
-  appendTimer() {
-    // Appends timer to DOM
   },
 
   setFastRoundPlayer1() {
@@ -139,6 +134,18 @@ const domUpdates = {
     );
     $('.round-feedback').toggle('none')
   },
+  
+  removeVisibility() {
+    $('#jq-answer0').hide();
+    $('#jq-dollar0').show();
+    $('#jq-value0').hide();
+    $('#jq-answer1').hide();
+    $('#jq-dollar1').show();
+    $('#jq-value1').hide();
+    $('#jq-answer2').hide();
+    $('#jq-dollar2').show();
+    $('#jq-value2').hide();
+  }
 }
 
 export default domUpdates 

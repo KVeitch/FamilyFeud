@@ -1,9 +1,9 @@
 import Round from './round'
-// import Game from './game';
+import domUpdates from './domUpdates';
 
 class FastMoneyRound extends Round {
-  constructor(survey, player1, player2) {
-    super(survey, player1, player2)
+  constructor(survey, player1, player2, currentPlayer) {
+    super(survey, player1, player2, currentPlayer)
     this.timerId = 0;
     this.multiplier = 1;
   }
@@ -11,47 +11,32 @@ class FastMoneyRound extends Round {
   startTime(game) {
     let timeLeft = 30;
     game.round.timerId = setInterval(countdown, 1000);
+    
     function countdown() {
       if (timeLeft == 0) {
         clearTimeout(game.round.timerId);
         game.round.removeTimerText();
-        // game.round.fastRoundTimeout(game);
+        game.roundCount === 4 ? domUpdates.displayGameWinner(game.round.getGameWinner(game)) : (startRound3or4(), hideAnswers());
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
-    } 
-  }
-
-  clearTimer(game) {
-    console.log(game.round)
-    clearInterval(game.round.timerId);
-    game.round.removeTimerText();
-    // playerTimeOut();
-  }
-
-  fastRoundTimeout(game) {
-    if (game.roundCount === 3) {
-      domUpdates.hideAnswers();
-      domUpdates.setFastRoundPlayer1();
-      game.startFastRound();
-      game.round.playerTimeOut();
-      domUpdates.setFastRoundHeader();
-    } else if (game.roundCount === 4) {
-      console.log('fastRoundTimeOut round 4')
     }
+
+    function stopTimer() {
+      clearInterval(game.round.timerId);
+      game.round.removeTimerText();
+    }
+    
+    window.countdown = countdown;
+    window.stopTimer = stopTimer; 
   }
 
   removeTimerText() {
     $('.container__round--timer').text('')
-  } // needs to go to domUpdates
-
-  playerRoundFeedback() {
-    // Gives feedback to player for Fast Round
-  }
+  } 
 
   assignMultiplier(multiplier) {
-    console.log('muli:',multiplier,'assign: ',this)
     this.multiplier = multiplier;
   }
 }
