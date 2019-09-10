@@ -102,12 +102,14 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
+  if ((game.roundCount === 3 || game.roundCount === 4) 
+    && game.round.answersRevealed === 3) {
     stopTimer();
   }
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
-  } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
+  } else if ((game.roundCount === 2 || game.roundCount === 3) 
+    && game.round.answersRevealed === 3) {
     startRound3or4();
   } 
 } 

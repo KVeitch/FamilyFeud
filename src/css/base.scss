@@ -40,7 +40,7 @@ header {
   margin-bottom: 2%;
 
   .header__container {
-    display: flex;
+    	display: flex;
 		justify-content: space-between;
 		padding: 10px 30px;
 	}
@@ -94,6 +94,7 @@ header {
 	}
 
 }
+
 button {
 	height: 50px;
 	background-color: #526c5b;
@@ -103,11 +104,12 @@ button {
 	font-family: $display-typeface;
 	margin: 10px auto;
 	text-shadow:
- -1px -1px 0 #000,  
-	1px -1px 0 #000,
-	-1px 1px 0 #000,
-	 1px 1px 0 #000;
+ 		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+	 	1px 1px 0 #000;
 }
+
 main {
 	display: flex;
 	justify-content: space-between;
@@ -119,7 +121,7 @@ main {
 	}
 
 	.qStyle {
-    background-color: $dark-green;
+    	background-color: $dark-green;
 		border:10px double $light-green;
 		color: $light-green;
 		display: flex;
@@ -129,7 +131,6 @@ main {
 		margin-bottom: 10px;
 		padding: 5px 20px;
 	}
-
 
 	.main__game {
 		background-color:$light-green;
@@ -164,7 +165,7 @@ main {
 
 		.player1__guess,
 		.player2__guess {
-      height: 50px;
+      	height: 50px;
 			font-size: 1em;
 			margin: 10px 0px;
 			padding: 0 10px;
@@ -181,11 +182,12 @@ main {
 		border: 10px double #244c3c;
 		display: none;
 		flex-direction: column;
-		height: 30%;
-		left: 25%;
+		height: 35%;
+		left: 50%;
 		min-height: 250px;
+		top: 50%;
+		transform: translate(-50%, -50%);
 		position: absolute;
-		top: 40%;
 		width: 50%;
 		z-index: 10;
 	}
@@ -262,4 +264,13 @@ main {
 	top: 0;
 	width: 100%;
 	z-index:10;
+}
+
+#multiplier-input {
+	align-self: center;
+	width: 140px;
+	height: 50px;
+	font-size: 1em;
+	margin: 10px 0px;
+	padding: 0 10px;
 }

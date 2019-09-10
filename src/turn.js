@@ -10,8 +10,10 @@ class Turn {
   hasAnswer(round) {
     let index; 
     let isCorrect = false;
-    let playerGuess = $('.player1__guess').val() ? $('.player1__guess').val().toLowerCase() : $('.player2__guess').val().toLowerCase();
-    if (this.surveyAnswers.includes(playerGuess) && !round.guessedAnswers.includes(playerGuess)) {
+    let playerGuess = $('.player1__guess').val() ? $('.player1__guess').val().toLowerCase() 
+      : $('.player2__guess').val().toLowerCase();
+    if (this.surveyAnswers.includes(playerGuess) 
+      && !round.guessedAnswers.includes(playerGuess)) {
       isCorrect = true;
       index = this.surveyAnswers.findIndex(answer => answer === playerGuess);
       round.answersRevealed++;
@@ -24,7 +26,8 @@ class Turn {
     if (game.round.answersRevealed === 3) {
       game.round.getRoundWinner(game);
     } else {
-      answerObj.isCorrect ? domUpdates.goodFeedback(answerObj.answer) : domUpdates.badFeedback();
+      answerObj.isCorrect ? domUpdates.goodFeedback(answerObj.answer) 
+        : domUpdates.badFeedback();
     }
   }
 
