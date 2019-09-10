@@ -1,11 +1,20 @@
 import chai from 'chai';
 const expect = chai.expect;
+const spies = require('chai-spies');
 import data from './sample-data-3surveys';
+// import $ from 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'
 // const data = require('./test/sample-data-3survey');
 import Game from '../src/game';
 import Player from '../src/player'
 import Round from '../src/round';
 import Turn from '../src/turn';
+import domUpdates from '../src/domUpdates';
+import { url } from 'inspector';
+chai.use(spies)
+chai.spy.on(Turn, ['hasAnswer'], () => {})
+// chai.spy.on(Turn, 'hasAnswer', () => {})
+
+// chai.spy.on(domUpdates, ['appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays', 'increaseScore'], () => { });
 // const Game = require('../src/game');
 // const Player = require('../src/player');
 // const Round = require('../src/round');
@@ -16,19 +25,31 @@ let game, player1, player2, round, turn;
 
 describe('TURN CLASS', function() {
   beforeEach(() => {
-    // console.log(Game)
+    global.$ = require('jquery');
+    global.window = window;
     game = new Game(data);
     game.getSurveys();
-    round = new Round(game.surveys[0]);
-    player1 = new Player('Kirk');
-    player2 = new Player('Ayla');
-    turn = new Turn(round.survey.answers, round.currentPlayer);
+    // player1 = new Player('Kirk');
+    // player2 = new Player('Ayla');
+    game.startRound();
+    game.makePlayers('Kirk', 'Ayla');
+    game.round.makeNewTurn();
+    
+    // round = new Round(game.surveys[0]);
+    // turn = new Turn(round.survey.answers, round.currentPlayer);
   })
+  
+  describe('hasAnswer', () => {
+    it.only('check to see if the hasAnswer method has been called', () => {
+      
+      game.round.turn.hasAnswer(round);
+      expect(game.round.turn.hasAnswer).to.have.been.called(1);
+      expect(game.round.turn.hasAnswer).to.to.have.been.called(2);
 
-  it('check to see if the answers to a survey contain the player answer', function() {
-    expect(turn.hasAnswer(guess1)).to.equal(false);
-    expect(turn.hasAnswer(guess2)).to.equal(true);
-  });
+      // $('.player__input').should.have.prop('maxlength');
+      // expect($('.player__input')).to.have.prop('maxlenght', 25)
+    });
+  })
   
   describe('.giveFeedback', function() {
     it('should let player know if they were right or wrong', function() {
@@ -59,6 +80,8 @@ describe('TURN CLASS', function() {
     it('should increase the score by the amount of people that gave the same answer multiplied by the multiplyer', function() {
       expect(true).to.equal(true);
     });
-  })
+  });
+
+  
 });
 

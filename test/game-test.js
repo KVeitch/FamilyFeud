@@ -12,16 +12,16 @@ import data from './sample-data-3surveys';
 import Game from '../src/game';
 import Player from '../src/player'
 import Round from '../src/round';
-import FastMoney from '../src/fastMoneyRound'
-import Turn from '../src/turn';
+// import FastMoney from '../src/fastMoneyRound'  **Currently not using in game testing might delete later
+// import Turn from '../src/turn'; **Currently not using in game testing might delete later
 chai.use(spies);
-chai.spy.on(domUpdates, ['appendNames', 'appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays'], () => {});
+chai.spy.on(domUpdates, ['appendNames'], () => {});
 
 let 
 game,
 player1, 
-player2, 
-turn;
+player2;
+// turn;
 
 describe('GAME CLASS', function() {
   beforeEach(() => { 
