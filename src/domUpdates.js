@@ -66,8 +66,7 @@ const domUpdates = {
   },
 
   postScore(game, playerNumber) {
-    $(`.player${playerNumber}__score`)
-      .text(`$ ${game[`player${playerNumber}`].score}`);
+    $(`.player${playerNumber}__score`).text(`${game[`player${playerNumber}`].score}`);
   },
 
   clearGuessInput() {

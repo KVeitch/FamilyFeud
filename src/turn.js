@@ -1,10 +1,9 @@
 import domUpdates from './domUpdates';
 
-
 class Turn {
   constructor(answers, player) {
-    this.answers = answers;
-    this.player = player;
+    this.answers = answers; 
+    this.player = player; 
     this.surveyAnswers = answers.map(answer => answer.answer.toLowerCase()); 
   }
 

@@ -16,7 +16,7 @@ class FastMoneyRound extends Round {
       if (timeLeft == 0) {
         clearTimeout(game.round.timerId);
         game.round.removeTimerText();
-        game.roundCount === 4 ? domUpdates.displayGameWinner(game.round.getGameWinner(game)) : (startRound3or4(), hideAnswers()) ;
+        game.roundCount === 4 ? domUpdates.displayGameWinner(game.round.getGameWinner(game)) : (startRound3or4(), hideAnswers());
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
@@ -34,7 +34,7 @@ class FastMoneyRound extends Round {
 
   removeTimerText() {
     $('.container__round--timer').text('')
-  }
+  } 
 
   assignMultiplier(multiplier) {
     this.multiplier = multiplier;

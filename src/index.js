@@ -4,24 +4,6 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import Game from './game';
 
-/////////////////////////////////////////////////////////////////////////
-////////////comment out the following for live data fetch////////////////
-/////////////////////////////////////////////////////////////////////////
-
-// import data from '../test/sample-data-3surveys';
-// let game = new Game(data);
-// game.getSurveys()
-
-/////////////////////////////////////////////////////////////////////////
-//////////////comment out the above for live data fetch//////////////////
-/////////////////////////////////////////////////////////////////////////
-
-
-
-/////////////////////////////////////////////////////////////////////////
-//////////Uncomment out the following for live data fetch////////////////
-/////////////////////////////////////////////////////////////////////////
-
 let game
 fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
   .then(fetchData => fetchData.json())
@@ -32,10 +14,6 @@ function createGame(data) {
   game = new Game(data);
   game.getSurveys();
 }
-
-/////////////////////////////////////////////////////////////////////////
-////////////Uncomment out the above for live data fetch//////////////////
-/////////////////////////////////////////////////////////////////////////
 
 $('.inputs__reset').click(() => location.reload());
 
@@ -128,14 +106,12 @@ function checkNewRoundStart() {
     && game.round.answersRevealed === 3) {
     stopTimer();
   }
-
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
   } else if ((game.roundCount === 2 || game.roundCount === 3) 
     && game.round.answersRevealed === 3) {
     startRound3or4();
   } 
-
 } 
 
 function startRound2 () {
@@ -145,6 +121,7 @@ function startRound2 () {
   game.round.makeNewTurn();
   repopulateDOM();
 }
+
 window.startRound3or4 = startRound3or4; 
 
 function startRound3or4() {
@@ -168,6 +145,7 @@ function repopulateDOM() {
   domUpdates.appendAnswers(game);
   domUpdates.updateRoundNumber(game);
 }
+
 window.hideAnswers = hideAnswers;
 
 function hideAnswers() {
