@@ -11,8 +11,14 @@ Should you be interested in running this project on your local machine, please d
 - Change into the directory and install the library dependencies. Run npm install to install project dependencies.
 - To verify that it is setup correctly, run npm start in your terminal. Go to http://localhost:8080/ and you should see the start page to our game. If that's the case, you're good to go. Enter control + c in your terminal to stop the server at any time.
 
+You can also play our game online at https://kveitch.github.io/FamilyFeud/.
+
+
 ### GIF of Game in Use
-![image](linktogif)
+
+![GameStart](docs/images/FMF_Start.gif)
+
+![GameEnd](docs/images/FF_end.gif)
 
 
 #### Created By:
