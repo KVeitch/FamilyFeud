@@ -1,4 +1,3 @@
-//write anything to the dom it goes here
 const domUpdates = {
 
   appendNames(game) {
@@ -67,7 +66,8 @@ const domUpdates = {
   },
 
   postScore(game, playerNumber) {
-    $(`.player${playerNumber}__score`).text(`$ ${game[`player${playerNumber}`].score}`);
+    $(`.player${playerNumber}__score`)
+      .text(`$ ${game[`player${playerNumber}`].score}`);
   },
 
   clearGuessInput() {
@@ -95,10 +95,6 @@ const domUpdates = {
 
   updateRoundNumber(game) {
     $('#round-number').text(game.roundCount)
-  },
-
-  appendTimer() {
-    // Appends timer to DOM
   },
 
   setFastRoundPlayer1() {

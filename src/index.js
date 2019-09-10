@@ -1,4 +1,3 @@
-//any calculation to go to the dom should happen here
 import $ from 'jquery';
 import domUpdates from './domUpdates';
 import './css/base.scss';
@@ -29,8 +28,6 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
   .then(fdata => createGame(fdata.data) )
   .catch(error => console.log(error))
 
-
-
 function createGame(data) {
   game = new Game(data);
   game.getSurveys();
@@ -59,7 +56,6 @@ $('.round-feedback').click( (event)=> {
     location.reload()
   }
 });
-
 
 function continueFR() {
   domUpdates.togglePlayerDisplays()
@@ -128,13 +124,15 @@ function checkToRevealAnswer(answer) {
 }
 
 function checkNewRoundStart() {
-  if ((game.roundCount === 3 || game.roundCount === 4) && game.round.answersRevealed === 3) {
+  if ((game.roundCount === 3 || game.roundCount === 4) 
+    && game.round.answersRevealed === 3) {
     stopTimer();
   }
 
   if (game.roundCount === 1 && game.round.answersRevealed === 3) { 
     startRound2();
-  } else if ((game.roundCount === 2 || game.roundCount === 3) && game.round.answersRevealed === 3) {
+  } else if ((game.roundCount === 2 || game.roundCount === 3) 
+    && game.round.answersRevealed === 3) {
     startRound3or4();
   } 
 

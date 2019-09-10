@@ -32,17 +32,9 @@ class FastMoneyRound extends Round {
     window.stopTimer = stopTimer; 
   }
 
-  // fastRoundTimeout(game) {
-  //     domUpdates.hideAnswers();
-  //     game.startFastRound();
-  //     domUpdates.appendNames(game)
-  //     game.round.playerTimeOut();
-  //     domUpdates.setFastRoundHeader();
-  // }
-
   removeTimerText() {
     $('.container__round--timer').text('')
-  } // needs to go to domUpdates
+  }
 
   assignMultiplier(multiplier) {
     this.multiplier = multiplier;

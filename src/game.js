@@ -1,10 +1,6 @@
 import Round from './round';
 import Player from '../src/player';
 import FastMoneyRound from './fastMoneyRound';
-import domUpdates from './domUpdates';
-// import domUpdates from './domUpdates';
-// const FastMoney = require('../src/fastMoney');
-// const Player = require('../src/player');
 
 class Game {
   constructor(data) {

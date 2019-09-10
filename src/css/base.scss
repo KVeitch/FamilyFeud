@@ -10,8 +10,6 @@ $light-green: #dcdcbb;
   box-sizing: border-box;
   margin: 0;
 	padding: 0;
-	// transition: 1s;
-	// border:1px solid red;
 }
 
 body {
@@ -109,7 +107,6 @@ button {
 	1px -1px 0 #000,
 	-1px 1px 0 #000,
 	 1px 1px 0 #000;
-	//  -webkit-text-fill-color: white; 
 }
 main {
 	display: flex;
@@ -132,7 +129,6 @@ main {
 		background-color: $dark-green;
 		border:10px double $light-green;
 	}
-
 
 	.main__game {
 		padding: 8px;
@@ -186,10 +182,11 @@ main {
 		z-index: 10;
 		background-color: #dcdcbb;
 		width: 50%;
-		height: 30%;
+		height: 35%;
 		min-height: 250px;
-		top: 40%;
-		left: 25%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		border: 10px double #244c3c;
 	}
 
@@ -265,4 +262,13 @@ main {
 	filter: brightness(50%);
 	background-color: #00000000;
 	background-image: url('../images/Money.jpg')
+}
+
+#multiplier-input {
+	align-self: center;
+	width: 140px;
+	height: 50px;
+	font-size: 1em;
+	margin: 10px 0px;
+	padding: 0 10px;
 }
