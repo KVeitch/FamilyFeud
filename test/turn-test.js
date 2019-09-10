@@ -9,9 +9,7 @@ import Player from '../src/player'
 import Round from '../src/round';
 import Turn from '../src/turn';
 import domUpdates from '../src/domUpdates';
-import { url } from 'inspector';
 chai.use(spies)
-chai.spy.on(Turn, ['hasAnswer'], () => {})
 // chai.spy.on(Turn, 'hasAnswer', () => {})
 
 // chai.spy.on(domUpdates, ['appendSurvey', 'hideSplashPage', 'appendAnswers', 'revealAnswers', 'badFeedback', 'goodFeedback', 'removeFeedback', 'postScore', 'clearGuessInput', 'togglePlayerDisplays', 'increaseScore'], () => { });
@@ -25,6 +23,8 @@ let game, player1, player2, round, turn;
 
 describe('TURN CLASS', function() {
   beforeEach(() => {
+    chai.spy.on(Turn, ['hasAnswer'], () => {})
+    chai.spy.on(domUpdates, [''])
     global.$ = require('jquery');
     global.window = window;
     game = new Game(data);
@@ -35,6 +35,10 @@ describe('TURN CLASS', function() {
     game.makePlayers('Kirk', 'Ayla');
     game.round.makeNewTurn();
     
+    
+    afterEach(() => {
+      chai.spy.restore(domUpdates);
+    });
     // round = new Round(game.surveys[0]);
     // turn = new Turn(round.survey.answers, round.currentPlayer);
   })
@@ -81,7 +85,6 @@ describe('TURN CLASS', function() {
       expect(true).to.equal(true);
     });
   });
-
   
 });
 
