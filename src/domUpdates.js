@@ -1,9 +1,8 @@
-//write anything to the dom it goes here
 const domUpdates = {
 
   appendNames(game) {
-    $('.jq-name1').text(game.player1.name);
-    $('.jq-name2').text(game.player2.name);
+    $('.jq-name1').text(game.round.player1Name);
+    $('.jq-name2').text(game.round.player2Name);
   },
 
   appendSurvey(game) {
@@ -30,17 +29,15 @@ const domUpdates = {
   },
 
   hideAnswers() {
-    setTimeout(()=> {
-      $('#jq-answer0').toggle();
-      $('#jq-dollar0').toggle();
-      $('#jq-value0').toggle();
-      $('#jq-answer1').toggle();
-      $('#jq-dollar1').toggle();
-      $('#jq-value1').toggle();
-      $('#jq-answer2').toggle();
-      $('#jq-dollar2').toggle();
-      $('#jq-value2').toggle();
-    },3000)
+    $('#jq-answer0').toggle();
+    $('#jq-dollar0').toggle();
+    $('#jq-value0').toggle();
+    $('#jq-answer1').toggle();
+    $('#jq-dollar1').toggle();
+    $('#jq-value1').toggle();
+    $('#jq-answer2').toggle();
+    $('#jq-dollar2').toggle();
+    $('#jq-value2').toggle();
   },
 
   badFeedback() {
@@ -64,12 +61,12 @@ const domUpdates = {
   },
   
   removeFeedback() {
-      $('.round-feedback').toggle('none');
-      $('.round-feedback').html('');
+    $('.round-feedback').toggle('none');
+    $('.round-feedback').html('');
   },
 
   postScore(game, playerNumber) {
-    $(`.player${playerNumber}__score`).text(`$ ${game[`player${playerNumber}`].score}`);
+    $(`.player${playerNumber}__score`).text(`${game[`player${playerNumber}`].score}`);
   },
 
   clearGuessInput() {
@@ -85,7 +82,7 @@ const domUpdates = {
     $('.round-feedback').append(
       `<div class='feedback__style'>
           <h3>$$$ Nice Job ${winner} $$$</h3>
-          <p> You've won this round! </p>
+          <p> You're ahead in points! </p>
       </div>`
     )
     $('.round-feedback').toggle('none')
@@ -97,10 +94,6 @@ const domUpdates = {
 
   updateRoundNumber(game) {
     $('#round-number').text(game.roundCount)
-  },
-
-  appendTimer() {
-    // Appends timer to DOM
   },
 
   setFastRoundPlayer1() {
@@ -117,6 +110,15 @@ const domUpdates = {
       `<div class='feedback__style'>
           <h3>$$$ Get ready ${currentPlayer} $$$</h3>
           <p> your fa$t round is about to start! </p>
+
+          <select id='multiplier-input'>
+            <option value='1'>1x Your Money</option>
+            <option value='2'>2x Your Money</option>
+            <option value='3'>3x Your Money</option>
+            <option value='4'>4x Your Money</option>
+            <option value='5'>5x Your Money</option>
+          </select>
+          <button id="multiplier-btn">THI$ MUCH</button>
       </div>`
     );
     $('.round-feedback').toggle('none')
@@ -127,10 +129,23 @@ const domUpdates = {
       `<div class='feedback__style'>
           <h3>$$$ Congrats ${winner} $$$</h3>
           <p> you won the game! </p>
+          <button class="inputs__reset">NEW GAME</button>
       </div>`
     );
     $('.round-feedback').toggle('none')
   },
+  
+  removeVisibility() {
+    $('#jq-answer0').hide();
+    $('#jq-dollar0').show();
+    $('#jq-value0').hide();
+    $('#jq-answer1').hide();
+    $('#jq-dollar1').show();
+    $('#jq-value1').hide();
+    $('#jq-answer2').hide();
+    $('#jq-dollar2').show();
+    $('#jq-value2').hide();
+  }
 }
 
 export default domUpdates 

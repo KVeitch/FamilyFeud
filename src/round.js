@@ -9,26 +9,23 @@ class Round {
     this.turn = {};
     this.currentPlayer = currentPlayer;
     this.answersRevealed = 0;
-    this.guessedAnswers = []
+    this.guessedAnswers = [];
   }
 
-  togglePlayer() {
-    this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
+  togglePlayer(fnfire) {
+    this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1
   }
 
   getRoundWinner(game) {
-    if (this.answersRevealed === 3) {
-	  game.roundCount++
-      let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
-	  domUpdates.displayRoundWinner(winner)
-    } 
-	}
-	
+    let winner = game.player1.score > game.player2.score ? this.player1Name 
+      : this.player2Name;
+    domUpdates.displayRoundWinner(winner);
+  }
+  
   getGameWinner(game) {
-    let winner = game.player1.score > game.player2.score ? this.player1Name : this.player2Name;
-    if (game.roundCount === 4 && this.answersRevealed === 3) {
-      domUpdates.displayGameWinner(winner);
-    }
+    let winner =  game.player1.score > game.player2.score ? this.player1Name 
+      : this.player2Name;
+    return winner;
 	}
 	
   makeNewTurn() {
@@ -38,7 +35,6 @@ class Round {
   addAnswerToGuessedAnswers(answer) {
     this.guessedAnswers.push(answer)
   }
-
 }
 
 export default Round;

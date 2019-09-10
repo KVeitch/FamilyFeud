@@ -1,54 +1,44 @@
 import Round from './round'
-import Game from './game';
+import domUpdates from './domUpdates';
 
 class FastMoneyRound extends Round {
-  constructor(survey, player1, player2) {
-    super(survey, player1, player2)
+  constructor(survey, player1, player2, currentPlayer) {
+    super(survey, player1, player2, currentPlayer)
+    this.timerId = 0;
+    this.multiplier = 1;
   }
 
   startTime(game) {
     let timeLeft = 30;
-    let timerId = setInterval(countdown, 1000);
+    game.round.timerId = setInterval(countdown, 1000);
+    
     function countdown() {
       if (timeLeft == 0) {
-        clearTimeout(timerId);
-        game.round.playerTimeOut();
-        fastRoundTimeout();
+        clearTimeout(game.round.timerId);
+        game.round.removeTimerText();
+        game.roundCount === 4 ? domUpdates.displayGameWinner(game.round.getGameWinner(game)) : (startRound3or4(), hideAnswers());
       } else {
         $('.container__round--timer').text(timeLeft + ' seconds remaining');
         timeLeft--;
       }
-    } 
-  }
-
-  fastRoundTimeout() {
-    if (game.roundCount === 3) {
-      domUpdates.hideAnswers();
-      domUpdates.setFastRoundPlayer1();
-      game.startFastRound();
-      game.round.playerTimeOut();
-      domUpdates.setFastRoundHeader();
-    } else if (game.roundCount === 4) {
-      
     }
+
+    function stopTimer() {
+      clearInterval(game.round.timerId);
+      game.round.removeTimerText();
+    }
+    
+    window.countdown = countdown;
+    window.stopTimer = stopTimer; 
   }
 
-  playerTimeOut() {
+  removeTimerText() {
     $('.container__round--timer').text('')
-  } // needs to go to domUpdates
+  } 
 
-  playerRoundFeedback() {
-    // Gives feedback to player for Fast Round
+  assignMultiplier(multiplier) {
+    this.multiplier = multiplier;
   }
-
 }
 
 export default FastMoneyRound;
-
-
-// be able to switch players and create a new fastMoneyRound
-// end the actual game in DOM & functionality & instantiates a new Game
-// finish all testing
-// overall refactor 
-// finish CSSing
-// multiplier make it happen baby
