@@ -3,7 +3,7 @@
 Fa$tMoney Family Feud is a web-based game that mimics the television show Family Feud. This project aims at improving 
 skills surrounding OOP, SRP, TDD by utilizing technologies such as: HTML, SCSS, JS, WebPack, Mocha Testing Framework, Chai Assertion Library, and Fetch API. 
 
-You can also play our game online at https://kveitch.github.io/FamilyFeud/.
+### You can play our game online at https://kveitch.github.io/FamilyFeud/.
 
 ### Play Our Game
 
